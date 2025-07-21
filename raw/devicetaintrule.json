@@ -19,11 +19,11 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object metadata"
     },
     "spec": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.DeviceTaintRuleSpec",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.2/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.DeviceTaintRuleSpec",
       "description": "Spec specifies the selector and one taint.\n\nChanging the spec automatically increments the metadata.generation number."
     }
   },

@@ -11,7 +11,7 @@
     "devices": {
       "description": "Devices lists some or all of the devices in this pool.\n\nMust not have more than 128 entries.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.api.resource.v1beta1.Device"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.2/_definitions.json#/definitions/io.k8s.api.resource.v1beta1.Device"
       },
       "type": [
         "array",
@@ -34,7 +34,7 @@
       ]
     },
     "nodeSelector": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.2/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector",
       "description": "NodeSelector defines which nodes have access to the resources in the pool, when that pool is not limited to a single node.\n\nMust use exactly one term.\n\nExactly one of NodeName, NodeSelector, AllNodes, and PerDeviceNodeSelection must be set."
     },
     "perDeviceNodeSelection": {
@@ -45,13 +45,13 @@
       ]
     },
     "pool": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.api.resource.v1beta1.ResourcePool",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.2/_definitions.json#/definitions/io.k8s.api.resource.v1beta1.ResourcePool",
       "description": "Pool describes the pool that this ResourceSlice belongs to."
     },
     "sharedCounters": {
       "description": "SharedCounters defines a list of counter sets, each of which has a name and a list of counters available.\n\nThe names of the SharedCounters must be unique in the ResourceSlice.\n\nThe maximum number of SharedCounters is 32.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.api.resource.v1beta1.CounterSet"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.2/_definitions.json#/definitions/io.k8s.api.resource.v1beta1.CounterSet"
       },
       "type": [
         "array",
