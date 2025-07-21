@@ -67,8 +67,6 @@ chmod -R u+w schemas/
 
 # Move generated content to root and push as a branch
 git checkout --orphan "$K8S_VERSION"
-git rm -rf . > /dev/null 2>&1 || true
-
 cp -r "schemas/${K8S_VERSION}/." .
 git add .
 git commit -m "Add schemas for $K8S_VERSION"
