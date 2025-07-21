@@ -3,7 +3,7 @@
   "properties": {
     "allocatedResources": {
       "additionalProperties": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.14/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       },
       "description": "AllocatedResources represents the compute resources allocated for this container by the node. Kubelet sets this value to Container.Resources.Requests upon successful pod admission and after successfully admitting desired pod resize.",
       "type": [
@@ -33,7 +33,7 @@
       ]
     },
     "lastState": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.13/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerState",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.14/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerState",
       "description": "LastTerminationState holds the last termination state of the container to help debug container crashes and restarts. This field is not populated if the container is still running and RestartCount is 0."
     },
     "name": {
@@ -51,7 +51,7 @@
       ]
     },
     "resources": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.13/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.14/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements",
       "description": "Resources represents the compute resource requests and limits that have been successfully enacted on the running container after it has been started or has been successfully resized."
     },
     "restartCount": {
@@ -70,13 +70,13 @@
       ]
     },
     "state": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.13/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerState",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.14/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerState",
       "description": "State holds details about the container's current condition."
     },
     "volumeMounts": {
       "description": "Status of volume mounts.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.13/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMountStatus"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.14/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMountStatus"
       },
       "type": [
         "array",

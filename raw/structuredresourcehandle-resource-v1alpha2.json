@@ -11,7 +11,7 @@
     "results": {
       "description": "Results lists all allocated driver resources.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.13/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.DriverAllocationResult"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.14/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.DriverAllocationResult"
       },
       "type": [
         "array",
@@ -20,11 +20,11 @@
       "x-kubernetes-list-type": "atomic"
     },
     "vendorClaimParameters": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.14/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
       "description": "VendorClaimParameters are the per-claim configuration parameters from the resource claim parameters at the time that the claim was allocated."
     },
     "vendorClassParameters": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.14/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
       "description": "VendorClassParameters are the per-claim configuration parameters from the resource class at the time that the claim was allocated."
     }
   },
