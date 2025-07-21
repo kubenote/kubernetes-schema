@@ -40,13 +40,6 @@ EXISTING_BRANCHES=$(git branch -a \
   | grep -E '^v1\.[0-9]+\.[0-9]+$' \
   | sort -Vu)
 
-EXISTING_BRANCHES=$(git branch -a \
-  | sed 's|remotes/origin/||' \
-  | sed 's|\* ||' \
-  | sed 's|^+ ||' \
-  | grep -E '^v1\.[0-9]+\.[0-9]+$' \
-  | sort -Vu)
-
 log "Existing branches: ${EXISTING_BRANCHES// /, }"
 
 K8S_VERSIONS=""
