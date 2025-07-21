@@ -7683,6 +7683,9 @@
           "type": "string"
         }
       },
+      "required": [
+        "ip"
+      ],
       "type": "object"
     },
     "io.k8s.api.core.v1.HostPathVolumeSource": {
@@ -9498,6 +9501,9 @@
           "type": "string"
         }
       },
+      "required": [
+        "ip"
+      ],
       "type": "object"
     },
     "io.k8s.api.core.v1.PodList": {

@@ -7934,6 +7934,9 @@
           "type": "string"
         }
       },
+      "required": [
+        "ip"
+      ],
       "type": "object",
       "additionalProperties": false
     },
@@ -9808,6 +9811,9 @@
           "type": "string"
         }
       },
+      "required": [
+        "ip"
+      ],
       "type": "object",
       "additionalProperties": false
     },
