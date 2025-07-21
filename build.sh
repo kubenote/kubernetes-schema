@@ -66,7 +66,7 @@ git config --global user.name "Brandon Massie"
 ls schemas
 # Move generated content to root and push as a branch
 git checkout --orphan "$K8S_VERSION"
-find . -mindepth 1 -maxdepth 1 ! -name 'schemas' -exec rm -rf {} +
+find . -mindepth 1 -maxdepth 1 ! -name 'schemas' ! -name '.git' -exec rm -rf {} +
 cp -r "schemas/${K8S_VERSION}"/* .
 git add .
 git commit -m "Add schemas for $K8S_VERSION"
