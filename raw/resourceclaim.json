@@ -19,15 +19,15 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.4/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.5/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object metadata"
     },
     "spec": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.4/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.ResourceClaimSpec",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.5/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.ResourceClaimSpec",
       "description": "Spec describes what is being requested and how to configure it. The spec is immutable."
     },
     "status": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.4/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.ResourceClaimStatus",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.5/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.ResourceClaimStatus",
       "description": "Status describes whether the claim is ready to use and what has been allocated."
     }
   },
