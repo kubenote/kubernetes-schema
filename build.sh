@@ -16,6 +16,13 @@ EXISTING_BRANCHES=$(git ls-remote --heads origin \
 # Determine versions that are missing
 VERSIONS_TO_BUILD=$(comm -23 <(echo "$ALL_K8S_VERSIONS" | sort) <(echo "$EXISTING_BRANCHES" | sort))
 
+
+if [[ -z "$VERSIONS_TO_BUILD" ]]; then
+  echo "No new versions to build. Exiting successfully."
+  exit 0
+fi
+
+echo "Versions to build:"
 echo "$VERSIONS_TO_BUILD"
 
 # Schema generation tool
