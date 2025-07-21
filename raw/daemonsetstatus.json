@@ -12,7 +12,7 @@
     "conditions": {
       "description": "Represents the latest available observations of a DaemonSet's current state.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.9/_definitions.json#/definitions/io.k8s.api.apps.v1.DaemonSetCondition"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.23.0/_definitions.json#/definitions/io.k8s.api.apps.v1.DaemonSetCondition"
       },
       "type": [
         "array",
@@ -54,7 +54,7 @@
       ]
     },
     "numberReady": {
-      "description": "The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and ready.",
+      "description": "numberReady is the number of nodes that should be running the daemon pod and have one or more of the daemon pod running with a Ready Condition.",
       "format": "int32",
       "type": [
         "integer",
