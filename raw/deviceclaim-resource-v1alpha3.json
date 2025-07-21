@@ -4,7 +4,7 @@
     "config": {
       "description": "This field holds configuration for multiple potential drivers which could satisfy requests in this claim. It is ignored while allocating the claim.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.6/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.DeviceClaimConfiguration"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.DeviceClaimConfiguration"
       },
       "type": [
         "array",
@@ -15,7 +15,7 @@
     "constraints": {
       "description": "These constraints must be satisfied by the set of devices that get allocated for the claim.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.6/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.DeviceConstraint"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.DeviceConstraint"
       },
       "type": [
         "array",
@@ -26,7 +26,7 @@
     "requests": {
       "description": "Requests represent individual requests for distinct devices which must all be satisfied. If empty, nothing needs to be allocated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.6/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.DeviceRequest"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.7/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.DeviceRequest"
       },
       "type": [
         "array",
