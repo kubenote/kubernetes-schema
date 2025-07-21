@@ -2,11 +2,11 @@
   "description": "JobCondition describes current state of a job.",
   "properties": {
     "lastProbeTime": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.23.5/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.23.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Last time the condition was checked."
     },
     "lastTransitionTime": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.23.5/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.23.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Last time the condition transit from one status to another."
     },
     "message": {
@@ -31,12 +31,7 @@
       ]
     },
     "type": {
-      "description": "Type of job condition, Complete or Failed.\n\nPossible enum values:\n - `\"Complete\"` means the job has completed its execution.\n - `\"Failed\"` means the job has failed its execution.\n - `\"Suspended\"` means the job has been suspended.",
-      "enum": [
-        "Complete",
-        "Failed",
-        "Suspended"
-      ],
+      "description": "Type of job condition, Complete or Failed.",
       "type": [
         "string",
         "null"

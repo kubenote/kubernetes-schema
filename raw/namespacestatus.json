@@ -4,7 +4,7 @@
     "conditions": {
       "description": "Represents the latest available observations of a namespace's current state.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.23.5/_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceCondition"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.23.6/_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceCondition"
       },
       "type": [
         "array",
@@ -14,11 +14,7 @@
       "x-kubernetes-patch-strategy": "merge"
     },
     "phase": {
-      "description": "Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/\n\nPossible enum values:\n - `\"Active\"` means the namespace is available for use in the system\n - `\"Terminating\"` means the namespace is undergoing graceful termination",
-      "enum": [
-        "Active",
-        "Terminating"
-      ],
+      "description": "Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/\n\n",
       "type": [
         "string",
         "null"
