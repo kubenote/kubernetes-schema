@@ -15,7 +15,7 @@ command -v docker >/dev/null 2>&1 || error_exit "docker not found"
 
 REPO_DIR="$(pwd)"
 WORKDIR="$REPO_DIR/schemas"
-OPENAPI2JSONSCHEMA="docker run -i -v ${WORKDIR}:/out/schemas ghcr.io/yannh/openapi2jsonschema:latest"
+OPENAPI2JSONSCHEMA="docker run -i -v ${REPO_DIR}:/out/schemas ghcr.io/yannh/openapi2jsonschema:latest"
 
 log "Creating work directory at $WORKDIR"
 mkdir -p "$WORKDIR"
