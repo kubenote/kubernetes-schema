@@ -4,7 +4,7 @@
     "conditions": {
       "description": "Conditions contains the latest observation of the device's state. If the device has been configured according to the class and claim config references, the `Ready` condition should be True.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.1/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
       },
       "type": [
         "array",
@@ -16,7 +16,7 @@
       "x-kubernetes-list-type": "map"
     },
     "data": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.1/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
       "description": "Data contains arbitrary driver-specific data.\n\nThe length of the raw data must be smaller or equal to 10 Ki."
     },
     "device": {
@@ -34,7 +34,7 @@
       ]
     },
     "networkData": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.1/_definitions.json#/definitions/io.k8s.api.resource.v1beta1.NetworkDeviceData",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.2/_definitions.json#/definitions/io.k8s.api.resource.v1beta1.NetworkDeviceData",
       "description": "NetworkData contains network-related information specific to the device."
     },
     "pool": {
