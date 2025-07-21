@@ -1,106 +1,48 @@
-#!/bin/bash
-set -euo pipefail
+#!/bin/bash -xe
 
-log() {
-  echo "[$(date +'%Y-%m-%d %H:%M:%S')] $*"
-}
+# Get all v1.X.Y versions from upstream Kubernetes repo (skip v1.10–v1.18)
+ALL_K8S_VERSIONS=$(git ls-remote --refs --tags https://github.com/kubernetes/kubernetes.git | cut -d/ -f3 | grep -e '^v1\.[0-9]\{2\}\.[0-9]\{1,2\}$' | grep -v -e  '^v1\.1[0-8]\{1\}' )
 
-error_exit() {
-  echo "[ERROR] $*" >&2
-  exit 1
-}
-
-command -v git >/dev/null 2>&1 || error_exit "git not found"
-command -v docker >/dev/null 2>&1 || error_exit "docker not found"
-
-REPO_DIR="$(pwd)"
-WORKDIR="$REPO_DIR/schemas"
-OPENAPI2JSONSCHEMA="docker run -i -v ${REPO_DIR}:/out/schemas ghcr.io/yannh/openapi2jsonschema:latest"
-
-log "Creating work directory at $WORKDIR"
-mkdir -p "$WORKDIR"
-cd "$REPO_DIR"
-
-log "Fetching Kubernetes versions."
-ALL_K8S_VERSIONS=$(git ls-remote --refs --tags https://github.com/kubernetes/kubernetes.git \
-  | cut -d/ -f3 \
-  | sed 's/,$/\n/' \
-  | grep -E '^v1\.[0-9]+\.[0-9]+$' \
-  | grep -vE '^v1\.(0|1[0-8])' \
-  | sort -Vu)
-
-log "Detected ${ALL_K8S_VERSIONS// /, }"
-
-log "Checking local/remote existing branches..."
-git fetch --all --prune
-EXISTING_BRANCHES=$(git branch -r \
-  | sed 's|origin/||' \
-  | sort -Vu)
-
-log "Existing branches: ${EXISTING_BRANCHES// /, }"
-
-K8S_VERSIONS=""
-for version in $ALL_K8S_VERSIONS; do
-  if ! grep -qxF "$version" <<< "$EXISTING_BRANCHES"; then
-    K8S_VERSIONS+="$version"$'\n'
-  fi
-done
-K8S_VERSIONS=$(echo "$K8S_VERSIONS" | sort -u)
-
-
-if [[ -z "$K8S_VERSIONS" ]]; then
-  log "No new versions to process."
-  exit 0
+# Filter by prefix if provided
+if [ -n "${K8S_VERSION_PREFIX}" ]; then
+  ALL_K8S_VERSIONS=$(echo "$ALL_K8S_VERSIONS" | grep "^${K8S_VERSION_PREFIX}")
 fi
 
-log "Versions to generate: ${K8S_VERSIONS// /, }"
-cd "$WORKDIR"
+# Get existing remote branches in current repo (assuming you're in your schemas repo)
+EXISTING_BRANCHES=$(git ls-remote --heads origin \
+  | awk -F'/' '{print $NF}' \
+  | grep -E '^v1\.[0-9]+\.[0-9]+$')
 
-for K8S_VERSION in $K8S_VERSIONS; do
-  log "Starting generation for $K8S_VERSION"
+# Determine versions that are missing
+VERSIONS_TO_BUILD=$(comm -23 <(echo "$ALL_K8S_VERSIONS" | sort) <(echo "$EXISTING_BRANCHES" | sort))
 
-  VERSION_DIR="$WORKDIR/$K8S_VERSION-tmp"
-  mkdir -p "$VERSION_DIR"
+echo "$VERSIONS_TO_BUILD"
 
-  SCHEMA_URL="https://raw.githubusercontent.com/kubernetes/kubernetes/${K8S_VERSION}/api/openapi-spec/swagger.json"
-  PREFIX_URL="https://raw.githubusercontent.com/kube-forge/k8s-schema/${K8S_VERSION}/raw/_definitions.json"
+# Schema generation tool
+OPENAPI2JSONSCHEMABIN="docker run -i -v ${PWD}:/out ghcr.io/yannh/openapi2jsonschema:latest"
 
-  log "Validating schema URL: $SCHEMA_URL"
-  if ! curl -fsI "$SCHEMA_URL" >/dev/null; then
-    log "Skipping $K8S_VERSION - schema URL not reachable"
-    continue
+# Loop and generate schemas for missing versions
+for K8S_VERSION in $VERSIONS_TO_BUILD; do
+  SCHEMA="https://raw.githubusercontent.com/kubernetes/kubernetes/${K8S_VERSION}/api/openapi-spec/swagger.json"
+  PREFIX="https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/${K8S_VERSION}/_definitions.json"
+
+  if [ ! -d "schemas/${K8S_VERSION}-standalone-strict" ]; then
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone-strict" --expanded --kubernetes --stand-alone --strict "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone-strict" --kubernetes --stand-alone --strict "${SCHEMA}"
   fi
 
-  for mode in \
-    "standalone-strict --expanded --kubernetes --stand-alone --strict" \
-    "standalone --expanded --kubernetes --stand-alone" \
-    "local --expanded --kubernetes" \
-    "raw --expanded --kubernetes --prefix $PREFIX_URL"; do
+  if [ ! -d "schemas/${K8S_VERSION}-standalone" ]; then
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone" --expanded --kubernetes --stand-alone "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone" --kubernetes --stand-alone "${SCHEMA}"
+  fi
 
-    OUT_DIR="$VERSION_DIR/$(cut -d' ' -f1 <<< "$mode")"
-    ARGS="${mode#* }"
+  if [ ! -d "schemas/${K8S_VERSION}-local" ]; then
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-local" --expanded --kubernetes "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-local" --kubernetes "${SCHEMA}"
+  fi
 
-    log "Generating $OUT_DIR for $K8S_VERSION..."
-    if ! $OPENAPI2JSONSCHEMA -o "$OUT_DIR" $ARGS "$SCHEMA_URL"; then
-      error_exit "Failed to generate $OUT_DIR for $K8S_VERSION"
-    fi
-  done
-
-  cd "$REPO_DIR"
-  log "Creating worktree for $K8S_VERSION"
-  git worktree add --orphan "$K8S_VERSION" "$WORKDIR/$K8S_VERSION-branch"
-  cd "$WORKDIR/$K8S_VERSION-branch"
-
-  rm -rf *
-  cp -r "$VERSION_DIR/"* .
-
-  git add .
-  git commit -m "Add schemas for $K8S_VERSION"
-  git push origin "$K8S_VERSION"
-
-  log "Cleaning up worktree and temp files for $K8S_VERSION"
-  rm -rf "$VERSION_DIR"
-  git worktree remove "$WORKDIR/$K8S_VERSION-branch" --force
+  if [ ! -d "schemas/${K8S_VERSION}" ]; then
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}" --expanded --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}" --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
+  fi
 done
-
-log "All done. Schemas processed and pushed."
