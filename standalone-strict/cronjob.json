@@ -655,15 +655,13 @@
                               ],
                               "additionalProperties": false
                             },
-                            "type": [
-                              "array",
-                              "null"
-                            ],
+                            "type": "array",
                             "x-kubernetes-list-type": "atomic"
                           }
                         },
                         "required": [
-                          "action"
+                          "action",
+                          "onPodConditions"
                         ],
                         "type": [
                           "object",
