@@ -12,7 +12,8 @@
       "type": [
         "array",
         "null"
-      ]
+      ],
+      "x-kubernetes-list-type": "atomic"
     },
     "command": {
       "description": "Entrypoint array. Not executed within a shell. The image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
@@ -25,29 +26,35 @@
       "type": [
         "array",
         "null"
-      ]
+      ],
+      "x-kubernetes-list-type": "atomic"
     },
     "env": {
       "description": "List of environment variables to set in the container. Cannot be updated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
       },
       "type": [
         "array",
         "null"
       ],
+      "x-kubernetes-list-map-keys": [
+        "name"
+      ],
+      "x-kubernetes-list-type": "map",
       "x-kubernetes-patch-merge-key": "name",
       "x-kubernetes-patch-strategy": "merge"
     },
     "envFrom": {
       "description": "List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
       },
       "type": [
         "array",
         "null"
-      ]
+      ],
+      "x-kubernetes-list-type": "atomic"
     },
     "image": {
       "description": "Container image name. More info: https://kubernetes.io/docs/concepts/containers/images",
@@ -64,11 +71,11 @@
       ]
     },
     "lifecycle": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle",
       "description": "Lifecycle is not allowed for ephemeral containers."
     },
     "livenessProbe": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
       "description": "Probes are not allowed for ephemeral containers."
     },
     "name": {
@@ -81,7 +88,7 @@
     "ports": {
       "description": "Ports are not allowed for ephemeral containers.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort"
       },
       "type": [
         "array",
@@ -96,13 +103,13 @@
       "x-kubernetes-patch-strategy": "merge"
     },
     "readinessProbe": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
       "description": "Probes are not allowed for ephemeral containers."
     },
     "resizePolicy": {
       "description": "Resources resize policy for the container.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerResizePolicy"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerResizePolicy"
       },
       "type": [
         "array",
@@ -111,7 +118,7 @@
       "x-kubernetes-list-type": "atomic"
     },
     "resources": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements",
       "description": "Resources are not allowed for ephemeral containers. Ephemeral containers use spare resources already allocated to the pod."
     },
     "restartPolicy": {
@@ -122,11 +129,11 @@
       ]
     },
     "securityContext": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.SecurityContext",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.SecurityContext",
       "description": "Optional: SecurityContext defines the security options the ephemeral container should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext."
     },
     "startupProbe": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
       "description": "Probes are not allowed for ephemeral containers."
     },
     "stdin": {
@@ -174,24 +181,32 @@
     "volumeDevices": {
       "description": "volumeDevices is the list of block devices to be used by the container.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeDevice"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeDevice"
       },
       "type": [
         "array",
         "null"
       ],
+      "x-kubernetes-list-map-keys": [
+        "devicePath"
+      ],
+      "x-kubernetes-list-type": "map",
       "x-kubernetes-patch-merge-key": "devicePath",
       "x-kubernetes-patch-strategy": "merge"
     },
     "volumeMounts": {
       "description": "Pod volumes to mount into the container's filesystem. Subpath mounts are not allowed for ephemeral containers. Cannot be updated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
       },
       "type": [
         "array",
         "null"
       ],
+      "x-kubernetes-list-map-keys": [
+        "mountPath"
+      ],
+      "x-kubernetes-list-type": "map",
       "x-kubernetes-patch-merge-key": "mountPath",
       "x-kubernetes-patch-strategy": "merge"
     },

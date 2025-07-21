@@ -2,7 +2,7 @@
   "description": "NodeSpec describes the attributes that a node is created with.",
   "properties": {
     "configSource": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.NodeConfigSource",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.NodeConfigSource",
       "description": "Deprecated: Previously used to specify the source of the node's configuration for the DynamicKubeletConfig feature. This feature is removed."
     },
     "externalID": {
@@ -31,6 +31,7 @@
         "array",
         "null"
       ],
+      "x-kubernetes-list-type": "set",
       "x-kubernetes-patch-strategy": "merge"
     },
     "providerID": {
@@ -43,12 +44,13 @@
     "taints": {
       "description": "If specified, the node's taints.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.9/_definitions.json#/definitions/io.k8s.api.core.v1.Taint"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.0/_definitions.json#/definitions/io.k8s.api.core.v1.Taint"
       },
       "type": [
         "array",
         "null"
-      ]
+      ],
+      "x-kubernetes-list-type": "atomic"
     },
     "unschedulable": {
       "description": "Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration",
