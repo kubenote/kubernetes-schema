@@ -45,6 +45,7 @@
         "imagepolicy.k8s.io/v1alpha1",
         "internal.apiserver.k8s.io/v1alpha1",
         "networking.k8s.io/v1",
+        "networking.k8s.io/v1alpha1",
         "networking.k8s.io/v1beta1",
         "node.k8s.io/v1",
         "node.k8s.io/v1alpha1",
@@ -101,7 +102,7 @@
       ]
     },
     "preconditions": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.24.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.25.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions",
       "description": "Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned."
     },
     "propagationPolicy": {
@@ -298,6 +299,11 @@
       "group": "networking.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1"
+    },
+    {
+      "group": "networking.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1alpha1"
     },
     {
       "group": "networking.k8s.io",
