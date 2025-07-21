@@ -512,9 +512,6 @@
           "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
         }
       },
-      "required": [
-        "items"
-      ],
       "type": "object",
       "x-kubernetes-group-version-kind": [
         {
@@ -576,9 +573,6 @@
           "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
         }
       },
-      "required": [
-        "items"
-      ],
       "type": "object",
       "x-kubernetes-group-version-kind": [
         {
@@ -1175,9 +1169,6 @@
           "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
         }
       },
-      "required": [
-        "items"
-      ],
       "type": "object",
       "x-kubernetes-group-version-kind": [
         {
@@ -1239,9 +1230,6 @@
           "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
         }
       },
-      "required": [
-        "items"
-      ],
       "type": "object",
       "x-kubernetes-group-version-kind": [
         {
@@ -1666,9 +1654,6 @@
           "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
         }
       },
-      "required": [
-        "items"
-      ],
       "type": "object",
       "x-kubernetes-group-version-kind": [
         {
@@ -1730,9 +1715,6 @@
           "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
         }
       },
-      "required": [
-        "items"
-      ],
       "type": "object",
       "x-kubernetes-group-version-kind": [
         {
@@ -7683,9 +7665,6 @@
           "type": "string"
         }
       },
-      "required": [
-        "ip"
-      ],
       "type": "object"
     },
     "io.k8s.api.core.v1.HostPathVolumeSource": {
@@ -9501,9 +9480,6 @@
           "type": "string"
         }
       },
-      "required": [
-        "ip"
-      ],
       "type": "object"
     },
     "io.k8s.api.core.v1.PodList": {
