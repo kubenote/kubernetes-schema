@@ -50,6 +50,8 @@ done
 git config --global user.email "r.rakeda@gmail.com"
 git config --global user.name "Brandon Massie"
 
+chmod -R u+w schemas/
+
 # Move generated content to root and push as a branch
 git checkout --orphan "$K8S_VERSION"
 git rm -rf . > /dev/null 2>&1 || true
