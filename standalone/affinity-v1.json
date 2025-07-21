@@ -304,7 +304,8 @@
                     "type": [
                       "object",
                       "null"
-                    ]
+                    ],
+                    "x-kubernetes-map-type": "atomic"
                   },
                   "namespaces": {
                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -417,7 +418,8 @@
                 "type": [
                   "object",
                   "null"
-                ]
+                ],
+                "x-kubernetes-map-type": "atomic"
               },
               "namespaces": {
                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -530,7 +532,8 @@
                     "type": [
                       "object",
                       "null"
-                    ]
+                    ],
+                    "x-kubernetes-map-type": "atomic"
                   },
                   "namespaces": {
                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -643,7 +646,8 @@
                 "type": [
                   "object",
                   "null"
-                ]
+                ],
+                "x-kubernetes-map-type": "atomic"
               },
               "namespaces": {
                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",

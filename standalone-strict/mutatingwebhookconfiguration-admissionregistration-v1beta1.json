@@ -427,6 +427,7 @@
               "object",
               "null"
             ],
+            "x-kubernetes-map-type": "atomic",
             "additionalProperties": false
           },
           "objectSelector": {
@@ -494,6 +495,7 @@
               "object",
               "null"
             ],
+            "x-kubernetes-map-type": "atomic",
             "additionalProperties": false
           },
           "reinvocationPolicy": {

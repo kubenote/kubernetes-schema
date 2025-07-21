@@ -619,7 +619,7 @@
     {
       "group": "flowcontrol.apiserver.k8s.io",
       "kind": "FlowSchema",
-      "version": "v1alpha1"
+      "version": "v1beta1"
     }
   ],
   "additionalProperties": false,

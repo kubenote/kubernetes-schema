@@ -368,6 +368,7 @@
             }
           },
           "type": "object",
+          "x-kubernetes-map-type": "atomic",
           "additionalProperties": false
         },
         "strategy": {
@@ -1006,6 +1007,7 @@
                                       "object",
                                       "null"
                                     ],
+                                    "x-kubernetes-map-type": "atomic",
                                     "additionalProperties": false
                                   },
                                   "namespaces": {
@@ -1123,6 +1125,7 @@
                                   "object",
                                   "null"
                                 ],
+                                "x-kubernetes-map-type": "atomic",
                                 "additionalProperties": false
                               },
                               "namespaces": {
@@ -1240,6 +1243,7 @@
                                       "object",
                                       "null"
                                     ],
+                                    "x-kubernetes-map-type": "atomic",
                                     "additionalProperties": false
                                   },
                                   "namespaces": {
@@ -1357,6 +1361,7 @@
                                   "object",
                                   "null"
                                 ],
+                                "x-kubernetes-map-type": "atomic",
                                 "additionalProperties": false
                               },
                               "namespaces": {
@@ -6576,7 +6581,7 @@
                       ]
                     },
                     "fsGroupChangePolicy": {
-                      "description": "fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir. Valid values are \"OnRootMismatch\" and \"Always\". If not specified defaults to \"Always\".",
+                      "description": "fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir. Valid values are \"OnRootMismatch\" and \"Always\". If not specified, \"Always\" is used.",
                       "type": [
                         "string",
                         "null"
@@ -6922,6 +6927,7 @@
                           "object",
                           "null"
                         ],
+                        "x-kubernetes-map-type": "atomic",
                         "additionalProperties": false
                       },
                       "maxSkew": {
@@ -7902,6 +7908,7 @@
                                       "object",
                                       "null"
                                     ],
+                                    "x-kubernetes-map-type": "atomic",
                                     "additionalProperties": false
                                   },
                                   "storageClassName": {
@@ -8707,12 +8714,12 @@
                               ],
                               "additionalProperties": false
                             },
-                            "type": "array"
+                            "type": [
+                              "array",
+                              "null"
+                            ]
                           }
                         },
-                        "required": [
-                          "sources"
-                        ],
                         "type": [
                           "object",
                           "null"

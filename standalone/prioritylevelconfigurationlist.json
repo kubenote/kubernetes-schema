@@ -445,7 +445,7 @@
           {
             "group": "flowcontrol.apiserver.k8s.io",
             "kind": "PriorityLevelConfiguration",
-            "version": "v1alpha1"
+            "version": "v1beta1"
           }
         ]
       },
@@ -511,7 +511,7 @@
     {
       "group": "flowcontrol.apiserver.k8s.io",
       "kind": "PriorityLevelConfigurationList",
-      "version": "v1alpha1"
+      "version": "v1beta1"
     }
   ],
   "$schema": "http://json-schema.org/schema#"

@@ -74,6 +74,7 @@
                   "object",
                   "null"
                 ],
+                "x-kubernetes-map-type": "atomic",
                 "additionalProperties": false
               },
               "namespaces": {
@@ -191,6 +192,7 @@
               "object",
               "null"
             ],
+            "x-kubernetes-map-type": "atomic",
             "additionalProperties": false
           },
           "namespaces": {
