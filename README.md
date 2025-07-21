@@ -1,48 +1,38 @@
-# Kubernetes JSON Schemas
+# kubernetes-schema
 
-## Fork
+> A structured and versioned archive of Kubernetes JSON schemas, organized for easier consumption and tooling integration.
 
-This is a fork from [instrumenta/kubernetes-json-schema](https://github.com/instrumenta/kubernetes-json-schema)
-with updated scripts for easier maintenance, as well as schemas for all recent
-Kubernetes versions.
+## Background
 
-This repository is kept up-to-date automatically every day using Github Actions.
+This project is a continuation and restructuring of previous efforts to generate and maintain Kubernetes JSON schemas for validating YAML manifests.
 
+It is **forked and inspired by:**
+
+- [instrumenta/kubernetes-json-schema](https://github.com/instrumenta/kubernetes-json-schema)  
+  The original project that queried Kubernetes OpenAPI specs and converted them into JSON schemas for use in tools like `kubeval` and `kubeconform`.
+
+- [yannh/kubernetes-json-schema](https://github.com/yannh/kubernetes-json-schema)  
+  A maintained fork that improved schema structure, added strict variants, and ensured compatibility with Kubernetes' OpenAPI spec.
+
+## Purpose of This Fork
+
+This iteration focuses on simplifying access and versioning of schemas:
+
+- **Each Kubernetes version is published on its own Git branch**, allowing you to fetch only what you need.
+- The structure helps tooling and CI/CD pipelines efficiently download and reference only relevant schema versions.
+
+## Structure
+
+Each branch (`v1.XX.X`) contains the following folders:
+
+- `local/` – Fully dereferenced schemas without external `$ref` URLs.
+- `raw/` – Schemas referencing external definitions via `$ref`.
+- `standalone/` – Partially dereferenced schemas with internal structure.
+- `standalone-strict/` – Same as `standalone`, but with `additionalProperties: false` for stricter validation.
 
 ## Usage
 
-### Kubeconform
+To download schemas for a specific Kubernetes version:
 
-This is the default schema repository used by [Kubeconform](https://github.com/yannh/kubeconform), and does not
-need to be specified. When using multiple schema repositories, this repo can be referred to using the alias *default*.
-
-```
-# All 3 are equivalent
-$ kubeconform deployment.yaml
-$ kubeconform -schema-location default deployment.yaml
-$ kubeconform -schema-location 'https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/{{ .NormalizedKubernetesVersion }}-standalone{{ .StrictSuffix }}/{{ .ResourceKind }}{{ .KindSuffix }}.json' deployment.yaml
-Summary: 1 resource found in 1 file - Valid: 1, Invalid: 0, Errors: 0, Skipped: 0
-```
-
-### Kubeval
-
-```
-$ kubeval --strict --schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/ deployment.yaml
-PASS - deployment.yaml contains a valid Deployment
-```
-
-To run `kubeval` against a specific Kubernetes version, pass the `-v` argument
-```sh
-$ kubeval -v 1.19.8 -s  https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master ingress.yaml
-PASS - ingress.yaml contains a valid Ingress (ingress)
-```
-
-## Building the schemas yourself
-
-The tooling for generating these schemas is [a fork](https://github.com/yannh/openapi2jsonschema)
-from the original [openapi2jsonschema](https://github.com/yannh/openapi2jsonschema). See *build.sh*.
-
-It's not Kubernetes specific and should work with other OpenAPI
-APIs too. This should be useful if you're using a pre-release or otherwise
-modified version of Kubernetes, or something like OpenShift which extends the
-standard APIs with additional types.
+```bash
+git clone --branch v1.33.3 https://github.com/kubenote/kubernetes-schema.git
