@@ -2,7 +2,7 @@
   "description": "DeviceClaimConfiguration is used for configuration parameters in DeviceClaim.",
   "properties": {
     "opaque": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.0/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.OpaqueDeviceConfiguration",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.1/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.OpaqueDeviceConfiguration",
       "description": "Opaque provides driver-specific configuration parameters."
     },
     "requests": {
