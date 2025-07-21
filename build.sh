@@ -49,7 +49,7 @@ for K8S_VERSION in $VERSIONS_TO_BUILD; do
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/local" --kubernetes "${SCHEMA}"
   fi
 
-  if [ ! -d "schemas/${K8S_VERSION}" ]; then
+  if [ ! -d "schemas/${K8S_VERSION}/raw" ]; then
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --expanded --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
   fi
