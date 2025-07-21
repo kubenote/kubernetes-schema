@@ -2,7 +2,7 @@
   "description": "PersistentVolumeStatus is the current status of a persistent volume.",
   "properties": {
     "lastPhaseTransitionTime": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.8/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "lastPhaseTransitionTime is the time the phase transitioned from one to another and automatically resets to current time everytime a volume phase transitions."
     },
     "message": {
