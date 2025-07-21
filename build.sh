@@ -1,43 +1,70 @@
-#!/bin/bash -xe
+#!/bin/bash
+set -euo pipefail
 
-# This script uses openapi2jsonschema to generate a set of JSON schemas for
-# the specified Kubernetes versions in three different flavours:
-#
-#   X.Y.Z - URL referenced based on the specified GitHub repository
-#   X.Y.Z-standalone - de-referenced schemas, more useful as standalone documents
-#   X.Y.Z-standalone-strict - de-referenced schemas, more useful as standalone documents, additionalProperties disallowed
-#   X.Y.Z-local - relative references, useful to avoid the network dependency
+REPO_DIR="$(pwd)"
+WORKDIR="$(pwd)/schemas"
+OPENAPI2JSONSCHEMA="docker run -i -v ${WORKDIR}:/out/schemas ghcr.io/yannh/openapi2jsonschema:latest"
+
+mkdir -p "$WORKDIR"
+cd "$REPO_DIR"
 
 
-# All k8s versions, starting from 1.15
-K8S_VERSIONS=$(git ls-remote --refs --tags https://github.com/kubernetes/kubernetes.git | cut -d/ -f3 | grep -e '^v1\.[0-9]\{2\}\.[0-9]\{1,2\}$' | grep -v -e  '^v1\.1[0-8]\{1\}' )
-OPENAPI2JSONSCHEMABIN="docker run -i -v ${PWD}:/out/schemas ghcr.io/yannh/openapi2jsonschema:latest"
+# Fetch all upstream K8s versions >= v1.19.0
+ALL_K8S_VERSIONS=$(git ls-remote --refs --tags https://github.com/kubernetes/kubernetes.git \
+  | cut -d/ -f3 \
+  | sed 's/,$/\n/' \
+  | grep -E '^v1\.[0-9]+\.[0-9]+$' \
+  | grep -vE '^v1\.(0|1[0-8])' \
+  | sort -Vu)
 
-if [ -n "${K8S_VERSION_PREFIX}" ]; then
-  export K8S_VERSIONS=$(git ls-remote --refs --tags https://github.com/kubernetes/kubernetes.git | cut -d/ -f3 | grep -e '^'${K8S_VERSION_PREFIX} | grep -e '^v1\.[0-9]\{2\}\.[0-9]\{1,2\}$')
-fi
+# Get existing local and remote branches, normalized
+EXISTING_BRANCHES=$(git branch -a \
+  | sed 's|remotes/origin/||' \
+  | sed 's|\* ||' \
+  | sed 's|^+ ||' \
+  | sed 's/,$/\n/' \
+  | grep -E '^v1\.[0-9]+\.[0-9]+$' \
+  | sort -Vu)
 
-for K8S_VERSION in $K8S_VERSIONS master; do
-  SCHEMA=https://raw.githubusercontent.com/kubernetes/kubernetes/${K8S_VERSION}/api/openapi-spec/swagger.json
-  PREFIX=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/${K8S_VERSION}/_definitions.json
+# Filter versions not already in the repo
+K8S_VERSIONS=$(comm -23 \
+  <(echo "$ALL_K8S_VERSIONS" | tr ',' '\n' | sort -u) \
+  <(echo "$EXISTING_BRANCHES" | tr ',' '\n' | sort -u))
 
-  if [ ! -d "${K8S_VERSION}-standalone-strict" ]; then
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone-strict" --expanded --kubernetes --stand-alone --strict "${SCHEMA}"
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone-strict" --kubernetes --stand-alone --strict "${SCHEMA}"
-  fi
 
-  if [ ! -d "${K8S_VERSION}-standalone" ]; then
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone" --expanded --kubernetes --stand-alone "${SCHEMA}"
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone" --kubernetes --stand-alone "${SCHEMA}"
-  fi
+cd "$WORKDIR"
 
-  if [ ! -d "${K8S_VERSION}-local" ]; then
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-local" --expanded --kubernetes "${SCHEMA}"
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-local" --kubernetes "${SCHEMA}"
-  fi
+for K8S_VERSION in $K8S_VERSIONS; do
+  echo "Generating schemas for $K8S_VERSION..."
 
-  if [ ! -d "${K8S_VERSION}" ]; then
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}" --expanded --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}" --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
-  fi
+  VERSION_DIR="$WORKDIR/$K8S_VERSION-tmp"
+  mkdir -p "$VERSION_DIR"
+
+  SCHEMA_URL="https://raw.githubusercontent.com/kubernetes/kubernetes/${K8S_VERSION}/api/openapi-spec/swagger.json"
+  PREFIX_URL="https://raw.githubusercontent.com/kube-forge/k8s-schema/${K8S_VERSION}/raw/_definitions.json"
+
+  $OPENAPI2JSONSCHEMA -o "$VERSION_DIR/standalone-strict" --expanded --kubernetes --stand-alone --strict "$SCHEMA_URL"
+  $OPENAPI2JSONSCHEMA -o "$VERSION_DIR/standalone"         --expanded --kubernetes --stand-alone "$SCHEMA_URL"
+  $OPENAPI2JSONSCHEMA -o "$VERSION_DIR/local"             --expanded --kubernetes "$SCHEMA_URL"
+  $OPENAPI2JSONSCHEMA -o "$VERSION_DIR/raw"               --expanded --kubernetes --prefix "$PREFIX_URL" "$SCHEMA_URL"
+
+  cd "$REPO_DIR"
+  git worktree add --orphan "$K8S_VERSION" "$WORKDIR/$K8S_VERSION-branch"
+  cd "$WORKDIR/$K8S_VERSION-branch"
+
+  rm -rf *
+  cp -r "$VERSION_DIR/raw" ./raw
+  cp -r "$VERSION_DIR/local" ./local
+  cp -r "$VERSION_DIR/standalone" ./standalone
+  cp -r "$VERSION_DIR/standalone-strict" ./standalone-strict
+
+  git add .
+  git commit -m "Add schemas for $K8S_VERSION"
+  git push origin "$K8S_VERSION"
+
+  rm -rf "$VERSION_DIR"
+  git worktree remove "$WORKDIR/$K8S_VERSION-branch" --force
+
 done
+
+echo "Done: new versions processed and pushed."
