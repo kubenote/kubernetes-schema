@@ -14,7 +14,7 @@
     "items": {
       "description": "Items is the list of stateful sets.",
       "items": {
-        "description": "StatefulSet represents a set of pods with consistent identities. Identities are defined as:\n  - Network: A single stable DNS and hostname.\n  - Storage: As many VolumeClaims as requested.\n\nThe StatefulSet guarantees that a given network identity will always map to the same storage identity.",
+        "description": "StatefulSet represents a set of pods with consistent identities. Identities are defined as:\n - Network: A single stable DNS and hostname.\n - Storage: As many VolumeClaims as requested.\nThe StatefulSet guarantees that a given network identity will always map to the same storage identity.",
         "properties": {
           "apiVersion": {
             "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -1969,7 +1969,7 @@
                                             "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                             "properties": {
                                               "name": {
-                                                "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                                "description": "The header field name",
                                                 "type": "string"
                                               },
                                               "value": {
@@ -2112,7 +2112,7 @@
                                             "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                             "properties": {
                                               "name": {
-                                                "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                                "description": "The header field name",
                                                 "type": "string"
                                               },
                                               "value": {
@@ -2292,7 +2292,7 @@
                                         "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                         "properties": {
                                           "name": {
-                                            "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                            "description": "The header field name",
                                             "type": "string"
                                           },
                                           "value": {
@@ -2570,7 +2570,7 @@
                                         "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                         "properties": {
                                           "name": {
-                                            "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                            "description": "The header field name",
                                             "type": "string"
                                           },
                                           "value": {
@@ -3039,7 +3039,7 @@
                                         "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                         "properties": {
                                           "name": {
-                                            "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                            "description": "The header field name",
                                             "type": "string"
                                           },
                                           "value": {
@@ -3727,7 +3727,7 @@
                                             "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                             "properties": {
                                               "name": {
-                                                "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                                "description": "The header field name",
                                                 "type": "string"
                                               },
                                               "value": {
@@ -3870,7 +3870,7 @@
                                             "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                             "properties": {
                                               "name": {
-                                                "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                                "description": "The header field name",
                                                 "type": "string"
                                               },
                                               "value": {
@@ -4050,7 +4050,7 @@
                                         "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                         "properties": {
                                           "name": {
-                                            "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                            "description": "The header field name",
                                             "type": "string"
                                           },
                                           "value": {
@@ -4328,7 +4328,7 @@
                                         "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                         "properties": {
                                           "name": {
-                                            "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                            "description": "The header field name",
                                             "type": "string"
                                           },
                                           "value": {
@@ -4797,7 +4797,7 @@
                                         "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                         "properties": {
                                           "name": {
-                                            "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                            "description": "The header field name",
                                             "type": "string"
                                           },
                                           "value": {
@@ -5509,7 +5509,7 @@
                                             "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                             "properties": {
                                               "name": {
-                                                "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                                "description": "The header field name",
                                                 "type": "string"
                                               },
                                               "value": {
@@ -5652,7 +5652,7 @@
                                             "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                             "properties": {
                                               "name": {
-                                                "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                                "description": "The header field name",
                                                 "type": "string"
                                               },
                                               "value": {
@@ -5832,7 +5832,7 @@
                                         "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                         "properties": {
                                           "name": {
-                                            "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                            "description": "The header field name",
                                             "type": "string"
                                           },
                                           "value": {
@@ -6110,7 +6110,7 @@
                                         "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                         "properties": {
                                           "name": {
-                                            "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                            "description": "The header field name",
                                             "type": "string"
                                           },
                                           "value": {
@@ -6579,7 +6579,7 @@
                                         "description": "HTTPHeader describes a custom header to be used in HTTP probes",
                                         "properties": {
                                           "name": {
-                                            "description": "The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.",
+                                            "description": "The header field name",
                                             "type": "string"
                                           },
                                           "value": {
