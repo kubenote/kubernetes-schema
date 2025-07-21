@@ -4,7 +4,7 @@
     "attributes": {
       "description": "Attributes defines the attributes of this resource instance. The name of each attribute must be unique.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.10/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.NamedResourcesAttribute"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.11/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.NamedResourcesAttribute"
       },
       "type": [
         "array",
