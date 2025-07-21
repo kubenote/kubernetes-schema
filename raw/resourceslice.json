@@ -19,11 +19,11 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.3/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object metadata"
     },
     "spec": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.2/_definitions.json#/definitions/io.k8s.api.resource.v1beta1.ResourceSliceSpec",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.3/_definitions.json#/definitions/io.k8s.api.resource.v1beta1.ResourceSliceSpec",
       "description": "Contains the information published by the driver.\n\nChanging the spec automatically increments the metadata.generation number."
     }
   },
