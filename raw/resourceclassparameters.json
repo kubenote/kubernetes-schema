@@ -11,7 +11,7 @@
     "filters": {
       "description": "Filters describes additional contraints that must be met when using the class.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.3/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceFilter"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.4/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceFilter"
       },
       "type": [
         "array",
@@ -20,7 +20,7 @@
       "x-kubernetes-list-type": "atomic"
     },
     "generatedFrom": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.3/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceClassParametersReference",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.4/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceClassParametersReference",
       "description": "If this object was created from some other resource, then this links back to that resource. This field is used to find the in-tree representation of the class parameters when the parameter reference of the class refers to some unknown type."
     },
     "kind": {
@@ -34,13 +34,13 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.3/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.4/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object metadata"
     },
     "vendorParameters": {
       "description": "VendorParameters are arbitrary setup parameters for all claims using this class. They are ignored while allocating the claim. There must not be more than one entry per driver.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.3/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.VendorParameters"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.4/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.VendorParameters"
       },
       "type": [
         "array",

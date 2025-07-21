@@ -16,7 +16,7 @@
       ]
     },
     "structuredData": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.3/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.StructuredResourceHandle",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.4/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.StructuredResourceHandle",
       "description": "If StructuredData is set, then it needs to be used instead of Data."
     }
   },
