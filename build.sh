@@ -26,7 +26,7 @@ echo "Versions to build:"
 echo "$VERSIONS_TO_BUILD"
 
 # Schema generation tool
-OPENAPI2JSONSCHEMABIN="docker run --rm -i -u $(id -u):$(id -g) -v ${PWD}:/out ghcr.io/yannh/openapi2jsonschema:latest"
+OPENAPI2JSONSCHEMABIN="docker run --rm -i -u $(id -u):$(id -g) -v ${PWD}:/out/schemas ghcr.io/yannh/openapi2jsonschema:latest"
 
 
 # Loop and generate schemas for missing versions
@@ -34,22 +34,27 @@ for K8S_VERSION in $VERSIONS_TO_BUILD; do
   SCHEMA="https://raw.githubusercontent.com/kubernetes/kubernetes/${K8S_VERSION}/api/openapi-spec/swagger.json"
   PREFIX="https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/${K8S_VERSION}/_definitions.json"
 
-  if [ ! -d "schemas/${K8S_VERSION}-standalone-strict" ]; then
+  if [ ! -d "${K8S_VERSION}-standalone-strict" ]; then
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone-strict" --expanded --kubernetes --stand-alone --strict "${SCHEMA}"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone-strict" --kubernetes --stand-alone --strict "${SCHEMA}"
   fi
 
-  if [ ! -d "schemas/${K8S_VERSION}-standalone" ]; then
+  if [ ! -d "${K8S_VERSION}-standalone" ]; then
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone" --expanded --kubernetes --stand-alone "${SCHEMA}"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone" --kubernetes --stand-alone "${SCHEMA}"
   fi
 
-  if [ ! -d "schemas/${K8S_VERSION}-local" ]; then
+  if [ ! -d "${K8S_VERSION}-local" ]; then
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/local" --expanded --kubernetes "${SCHEMA}"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/local" --kubernetes "${SCHEMA}"
   fi
 
-  if [ ! -d "schemas/${K8S_VERSION}/raw" ]; then
+  if [ ! -d "${K8S_VERSION}" ]; then
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --expanded --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
+  fi
+
+  if [ ! -d "${K8S_VERSION}" ]; then
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --expanded --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
   fi
