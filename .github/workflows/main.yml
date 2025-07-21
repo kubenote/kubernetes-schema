@@ -27,8 +27,8 @@ jobs:
       - name: delete folders to regenerate
         run: "rm -rf ${{ env.PREFIX }}*"
 
-      - name: generate
-        run: make gen
+      - name: Fetch and Generate
+        run: ./build.sh
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
