@@ -77,7 +77,8 @@
     }
   },
   "required": [
-    "action"
+    "action",
+    "onPodConditions"
   ],
   "type": "object",
   "additionalProperties": false,
