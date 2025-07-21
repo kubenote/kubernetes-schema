@@ -26,7 +26,8 @@ echo "Versions to build:"
 echo "$VERSIONS_TO_BUILD"
 
 # Schema generation tool
-OPENAPI2JSONSCHEMABIN="docker run -i -v ${PWD}:/out ghcr.io/yannh/openapi2jsonschema:latest"
+OPENAPI2JSONSCHEMABIN="docker run --rm -i -u $(id -u):$(id -g) -v ${PWD}:/out ghcr.io/yannh/openapi2jsonschema:latest"
+
 
 # Loop and generate schemas for missing versions
 for K8S_VERSION in $VERSIONS_TO_BUILD; do
