@@ -9,13 +9,13 @@
       ]
     },
     "onExitCodes": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.9/_definitions.json#/definitions/io.k8s.api.batch.v1.PodFailurePolicyOnExitCodesRequirement",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.0/_definitions.json#/definitions/io.k8s.api.batch.v1.PodFailurePolicyOnExitCodesRequirement",
       "description": "Represents the requirement on the container exit codes."
     },
     "onPodConditions": {
       "description": "Represents the requirement on the pod conditions. The requirement is represented as a list of pod condition patterns. The requirement is satisfied if at least one pattern matches an actual pod condition. At most 20 elements are allowed.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.9/_definitions.json#/definitions/io.k8s.api.batch.v1.PodFailurePolicyOnPodConditionsPattern"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.0/_definitions.json#/definitions/io.k8s.api.batch.v1.PodFailurePolicyOnPodConditionsPattern"
       },
       "type": [
         "array",

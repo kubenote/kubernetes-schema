@@ -1,13 +1,6 @@
 {
   "description": "AllocationResult contains attributes of an allocated resource.",
   "properties": {
-    "controller": {
-      "description": "Controller is the name of the DRA driver which handled the allocation. That driver is also responsible for deallocating the claim. It is empty when the claim can be deallocated without involving a driver.\n\nA driver may allocate devices provided by other drivers, so this driver name here can be different from the driver names listed for the results.\n\nThis is an alpha field and requires enabling the DRAControlPlaneController feature gate.",
-      "type": [
-        "string",
-        "null"
-      ]
-    },
     "devices": {
       "description": "DeviceAllocationResult is the result of allocating devices.",
       "properties": {
@@ -75,6 +68,13 @@
           "items": {
             "description": "DeviceRequestAllocationResult contains the allocation result for one request.",
             "properties": {
+              "adminAccess": {
+                "description": "AdminAccess indicates that this device was allocated for administrative access. See the corresponding request field for a definition of mode.\n\nThis is an alpha field and requires enabling the DRAAdminAccess feature gate. Admin access is disabled if this field is unset or set to false, otherwise it is enabled.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
               "device": {
                 "description": "Device references one device instance via its name in the driver's resource pool. It must be a DNS label.",
                 "type": "string"

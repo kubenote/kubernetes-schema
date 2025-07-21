@@ -2105,6 +2105,7 @@
                           ]
                         },
                         "grpc": {
+                          "description": "GRPCAction specifies an action involving a GRPC service.",
                           "properties": {
                             "port": {
                               "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
@@ -2392,6 +2393,7 @@
                           ]
                         },
                         "grpc": {
+                          "description": "GRPCAction specifies an action involving a GRPC service.",
                           "properties": {
                             "port": {
                               "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
@@ -2981,6 +2983,7 @@
                           ]
                         },
                         "grpc": {
+                          "description": "GRPCAction specifies an action involving a GRPC service.",
                           "properties": {
                             "port": {
                               "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
@@ -3355,13 +3358,14 @@
                       "description": "PodDNSConfigOption defines DNS resolver options of a pod.",
                       "properties": {
                         "name": {
-                          "description": "Required.",
+                          "description": "Name is this DNS resolver option's name. Required.",
                           "type": [
                             "string",
                             "null"
                           ]
                         },
                         "value": {
+                          "description": "Value is this DNS resolver option's value.",
                           "type": [
                             "string",
                             "null"
@@ -4094,6 +4098,7 @@
                           ]
                         },
                         "grpc": {
+                          "description": "GRPCAction specifies an action involving a GRPC service.",
                           "properties": {
                             "port": {
                               "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
@@ -4381,6 +4386,7 @@
                           ]
                         },
                         "grpc": {
+                          "description": "GRPCAction specifies an action involving a GRPC service.",
                           "properties": {
                             "port": {
                               "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
@@ -4970,6 +4976,7 @@
                           ]
                         },
                         "grpc": {
+                          "description": "GRPCAction specifies an action involving a GRPC service.",
                           "properties": {
                             "port": {
                               "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
@@ -6120,6 +6127,7 @@
                           ]
                         },
                         "grpc": {
+                          "description": "GRPCAction specifies an action involving a GRPC service.",
                           "properties": {
                             "port": {
                               "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
@@ -6407,6 +6415,7 @@
                           ]
                         },
                         "grpc": {
+                          "description": "GRPCAction specifies an action involving a GRPC service.",
                           "properties": {
                             "port": {
                               "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
@@ -6996,6 +7005,7 @@
                           ]
                         },
                         "grpc": {
+                          "description": "GRPCAction specifies an action involving a GRPC service.",
                           "properties": {
                             "port": {
                               "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
@@ -7502,6 +7512,97 @@
                 "x-kubernetes-patch-merge-key": "name",
                 "x-kubernetes-patch-strategy": "merge,retainKeys"
               },
+              "resources": {
+                "description": "ResourceRequirements describes the compute resource requirements.",
+                "properties": {
+                  "claims": {
+                    "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.\n\nThis is an alpha field and requires enabling the DynamicResourceAllocation feature gate.\n\nThis field is immutable. It can only be set for containers.",
+                    "items": {
+                      "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                      "properties": {
+                        "name": {
+                          "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                          "type": "string"
+                        },
+                        "request": {
+                          "description": "Request is the name chosen for a request in the referenced claim. If empty, everything from the claim is made available, otherwise only the result of this request.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "name"
+                      ],
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "x-kubernetes-list-map-keys": [
+                      "name"
+                    ],
+                    "x-kubernetes-list-type": "map"
+                  },
+                  "limits": {
+                    "additionalProperties": {
+                      "oneOf": [
+                        {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      ]
+                    },
+                    "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "requests": {
+                    "additionalProperties": {
+                      "oneOf": [
+                        {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      ]
+                    },
+                    "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": false
+              },
               "restartPolicy": {
                 "description": "Restart policy for all containers within the pod. One of Always, OnFailure, Never. In some contexts, only a subset of those values may be permitted. Default to Always. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy",
                 "type": [
@@ -7623,6 +7724,13 @@
                     "format": "int64",
                     "type": [
                       "integer",
+                      "null"
+                    ]
+                  },
+                  "seLinuxChangePolicy": {
+                    "description": "seLinuxChangePolicy defines how the container's SELinux label is applied to all volumes used by the Pod. It has no effect on nodes that do not support SELinux or to volumes does not support SELinux. Valid values are \"MountOption\" and \"Recursive\".\n\n\"Recursive\" means relabeling of all files on all Pod volumes by the container runtime. This may be slow for large volumes, but allows mixing privileged and unprivileged Pods sharing the same volume on the same node.\n\n\"MountOption\" mounts all eligible Pod volumes with `-o context` mount option. This requires all Pods that share the same volume to use the same SELinux label. It is not possible to share the same volume among privileged and unprivileged Pods. Eligible volumes are in-tree FibreChannel and iSCSI volumes, and all CSI volumes whose CSI driver announces SELinux support by setting spec.seLinuxMount: true in their CSIDriver instance. Other volumes are always re-labelled recursively. \"MountOption\" value is allowed only when SELinuxMount feature gate is enabled.\n\nIf not specified and SELinuxMount feature gate is enabled, \"MountOption\" is used. If not specified and SELinuxMount feature gate is disabled, \"MountOption\" is used for ReadWriteOncePod volumes and \"Recursive\" for all other volumes.\n\nThis field affects only Pods that have SELinux label set, either in PodSecurityContext or in SecurityContext of all containers.\n\nAll Pods that use the same volume should use the same seLinuxChangePolicy, otherwise some pods can get stuck in ContainerCreating state. Note that this field cannot be set when spec.os.name is windows.",
+                    "type": [
+                      "string",
                       "null"
                     ]
                   },
@@ -7808,7 +7916,7 @@
                 ]
               },
               "setHostnameAsFQDN": {
-                "description": "If true the pod's hostname will be configured as the pod's FQDN, rather than the leaf name (the default). In Linux containers, this means setting the FQDN in the hostname field of the kernel (the nodename field of struct utsname). In Windows containers, this means setting the registry value of hostname for the registry key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters to FQDN. If a pod does not have FQDN, this has no effect. Default to false.",
+                "description": "If true the pod's hostname will be configured as the pod's FQDN, rather than the leaf name (the default). In Linux containers, this means setting the FQDN in the hostname field of the kernel (the nodename field of struct utsname). In Windows containers, this means setting the registry value of hostname for the registry key HKEY_LOCAL_MACHINE\\\\SYSTEM\\\\CurrentControlSet\\\\Services\\\\Tcpip\\\\Parameters to FQDN. If a pod does not have FQDN, this has no effect. Default to false.",
                 "type": [
                   "boolean",
                   "null"
@@ -8867,6 +8975,7 @@
                                   "additionalProperties": false
                                 },
                                 "dataSourceRef": {
+                                  "description": "TypedObjectReference contains enough information to let you locate the typed referenced object",
                                   "properties": {
                                     "apiGroup": {
                                       "description": "APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.",
@@ -10471,7 +10580,7 @@
                 "x-kubernetes-patch-strategy": "merge"
               },
               "containerStatuses": {
-                "description": "The list has one entry per container in the manifest. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status",
+                "description": "Statuses of containers in this pod. Each container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status",
                 "items": {
                   "description": "ContainerStatus contains details for the current status of this container.",
                   "properties": {
@@ -10501,15 +10610,16 @@
                     "allocatedResourcesStatus": {
                       "description": "AllocatedResourcesStatus represents the status of various resources allocated for this Pod.",
                       "items": {
+                        "description": "ResourceStatus represents the status of a single resource allocated to a Pod.",
                         "properties": {
                           "name": {
-                            "description": "Name of the resource. Must be unique within the pod and match one of the resources from the pod spec.",
+                            "description": "Name of the resource. Must be unique within the pod and in case of non-DRA resource, match one of the resources from the pod spec. For DRA resources, the value must be \"claim:<claim_name>/<request>\". When this status is reported about a container, the \"claim_name\" and \"request\" must match one of the claims of this container.",
                             "type": "string"
                           },
                           "resources": {
-                            "description": "List of unique Resources health. Each element in the list contains an unique resource ID and resource health. At a minimum, ResourceID must uniquely identify the Resource allocated to the Pod on the Node for the lifetime of a Pod. See ResourceID type for it's definition.",
+                            "description": "List of unique resources health. Each element in the list contains an unique resource ID and its health. At a minimum, for the lifetime of a Pod, resource ID must uniquely identify the resource allocated to the Pod on the Node. If other Pod on the same Node reports the status with the same resource ID, it must be the same resource they share. See ResourceID type definition for a specific format it has in various use cases.",
                             "items": {
-                              "description": "ResourceHealth represents the health of a resource. It has the latest device health information. This is a part of KEP https://kep.k8s.io/4680 and historical health changes are planned to be added in future iterations of a KEP.",
+                              "description": "ResourceHealth represents the health of a resource. It has the latest device health information. This is a part of KEP https://kep.k8s.io/4680.",
                               "properties": {
                                 "health": {
                                   "description": "Health of the resource. can be one of:\n - Healthy: operates as normal\n - Unhealthy: reported unhealthy. We consider this a temporary health issue\n              since we do not have a mechanism today to distinguish\n              temporary and permanent issues.\n - Unknown: The status cannot be determined.\n            For example, Device Plugin got unregistered and hasn't been re-registered since.\n\nIn future we may want to introduce the PermanentlyUnhealthy Status.",
@@ -11037,7 +11147,7 @@
                 "x-kubernetes-list-type": "atomic"
               },
               "ephemeralContainerStatuses": {
-                "description": "Status for any ephemeral containers that have run in this pod.",
+                "description": "Statuses for any ephemeral containers that have run in this pod. Each ephemeral container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status",
                 "items": {
                   "description": "ContainerStatus contains details for the current status of this container.",
                   "properties": {
@@ -11067,15 +11177,16 @@
                     "allocatedResourcesStatus": {
                       "description": "AllocatedResourcesStatus represents the status of various resources allocated for this Pod.",
                       "items": {
+                        "description": "ResourceStatus represents the status of a single resource allocated to a Pod.",
                         "properties": {
                           "name": {
-                            "description": "Name of the resource. Must be unique within the pod and match one of the resources from the pod spec.",
+                            "description": "Name of the resource. Must be unique within the pod and in case of non-DRA resource, match one of the resources from the pod spec. For DRA resources, the value must be \"claim:<claim_name>/<request>\". When this status is reported about a container, the \"claim_name\" and \"request\" must match one of the claims of this container.",
                             "type": "string"
                           },
                           "resources": {
-                            "description": "List of unique Resources health. Each element in the list contains an unique resource ID and resource health. At a minimum, ResourceID must uniquely identify the Resource allocated to the Pod on the Node for the lifetime of a Pod. See ResourceID type for it's definition.",
+                            "description": "List of unique resources health. Each element in the list contains an unique resource ID and its health. At a minimum, for the lifetime of a Pod, resource ID must uniquely identify the resource allocated to the Pod on the Node. If other Pod on the same Node reports the status with the same resource ID, it must be the same resource they share. See ResourceID type definition for a specific format it has in various use cases.",
                             "items": {
-                              "description": "ResourceHealth represents the health of a resource. It has the latest device health information. This is a part of KEP https://kep.k8s.io/4680 and historical health changes are planned to be added in future iterations of a KEP.",
+                              "description": "ResourceHealth represents the health of a resource. It has the latest device health information. This is a part of KEP https://kep.k8s.io/4680.",
                               "properties": {
                                 "health": {
                                   "description": "Health of the resource. can be one of:\n - Healthy: operates as normal\n - Unhealthy: reported unhealthy. We consider this a temporary health issue\n              since we do not have a mechanism today to distinguish\n              temporary and permanent issues.\n - Unknown: The status cannot be determined.\n            For example, Device Plugin got unregistered and hasn't been re-registered since.\n\nIn future we may want to introduce the PermanentlyUnhealthy Status.",
@@ -11637,7 +11748,7 @@
                 "x-kubernetes-patch-strategy": "merge"
               },
               "initContainerStatuses": {
-                "description": "The list has one entry per init container in the manifest. The most recent successful init container will have ready = true, the most recently started container will have startTime set. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status",
+                "description": "Statuses of init containers in this pod. The most recent successful non-restartable init container will have ready = true, the most recently started container will have startTime set. Each init container in the pod should have at most one status in this list, and all statuses should be for containers in the pod. However this is not enforced. If a status for a non-existent container is present in the list, or the list has duplicate names, the behavior of various Kubernetes components is not defined and those statuses might be ignored. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-and-container-status",
                 "items": {
                   "description": "ContainerStatus contains details for the current status of this container.",
                   "properties": {
@@ -11667,15 +11778,16 @@
                     "allocatedResourcesStatus": {
                       "description": "AllocatedResourcesStatus represents the status of various resources allocated for this Pod.",
                       "items": {
+                        "description": "ResourceStatus represents the status of a single resource allocated to a Pod.",
                         "properties": {
                           "name": {
-                            "description": "Name of the resource. Must be unique within the pod and match one of the resources from the pod spec.",
+                            "description": "Name of the resource. Must be unique within the pod and in case of non-DRA resource, match one of the resources from the pod spec. For DRA resources, the value must be \"claim:<claim_name>/<request>\". When this status is reported about a container, the \"claim_name\" and \"request\" must match one of the claims of this container.",
                             "type": "string"
                           },
                           "resources": {
-                            "description": "List of unique Resources health. Each element in the list contains an unique resource ID and resource health. At a minimum, ResourceID must uniquely identify the Resource allocated to the Pod on the Node for the lifetime of a Pod. See ResourceID type for it's definition.",
+                            "description": "List of unique resources health. Each element in the list contains an unique resource ID and its health. At a minimum, for the lifetime of a Pod, resource ID must uniquely identify the resource allocated to the Pod on the Node. If other Pod on the same Node reports the status with the same resource ID, it must be the same resource they share. See ResourceID type definition for a specific format it has in various use cases.",
                             "items": {
-                              "description": "ResourceHealth represents the health of a resource. It has the latest device health information. This is a part of KEP https://kep.k8s.io/4680 and historical health changes are planned to be added in future iterations of a KEP.",
+                              "description": "ResourceHealth represents the health of a resource. It has the latest device health information. This is a part of KEP https://kep.k8s.io/4680.",
                               "properties": {
                                 "health": {
                                   "description": "Health of the resource. can be one of:\n - Healthy: operates as normal\n - Unhealthy: reported unhealthy. We consider this a temporary health issue\n              since we do not have a mechanism today to distinguish\n              temporary and permanent issues.\n - Unknown: The status cannot be determined.\n            For example, Device Plugin got unregistered and hasn't been re-registered since.\n\nIn future we may want to introduce the PermanentlyUnhealthy Status.",

@@ -36,7 +36,7 @@
         "certificates.k8s.io/v1alpha1",
         "certificates.k8s.io/v1beta1",
         "coordination.k8s.io/v1",
-        "coordination.k8s.io/v1alpha1",
+        "coordination.k8s.io/v1alpha2",
         "coordination.k8s.io/v1beta1",
         "discovery.k8s.io/v1",
         "discovery.k8s.io/v1beta1",
@@ -61,6 +61,7 @@
         "rbac.authorization.k8s.io/v1alpha1",
         "rbac.authorization.k8s.io/v1beta1",
         "resource.k8s.io/v1alpha3",
+        "resource.k8s.io/v1beta1",
         "scheduling.k8s.io/v1",
         "scheduling.k8s.io/v1alpha1",
         "scheduling.k8s.io/v1beta1",
@@ -92,6 +93,13 @@
         "null"
       ]
     },
+    "ignoreStoreReadErrorWithClusterBreakingPotential": {
+      "description": "if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
       "type": [
@@ -110,7 +118,7 @@
       ]
     },
     "preconditions": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions",
       "description": "Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned."
     },
     "propagationPolicy": {
@@ -266,7 +274,7 @@
     {
       "group": "coordination.k8s.io",
       "kind": "DeleteOptions",
-      "version": "v1alpha1"
+      "version": "v1alpha2"
     },
     {
       "group": "coordination.k8s.io",
@@ -387,6 +395,11 @@
       "group": "resource.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1alpha3"
+    },
+    {
+      "group": "resource.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1beta1"
     },
     {
       "group": "scheduling.k8s.io",
