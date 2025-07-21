@@ -16,7 +16,7 @@
       ]
     },
     "nodeSelector": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.4/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.5/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector",
       "description": "nodeSelector defines which nodes the config is applicable to. An empty or nil nodeSelector selects all nodes. This field is immutable."
     },
     "perNodeHostBits": {
