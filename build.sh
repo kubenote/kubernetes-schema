@@ -21,7 +21,7 @@ log "Creating work directory at $WORKDIR"
 mkdir -p "$WORKDIR"
 cd "$REPO_DIR"
 
-log "Fetching Kubernetes versions >= v1.19.0..."
+log "Fetching Kubernetes versions."
 ALL_K8S_VERSIONS=$(git ls-remote --refs --tags https://github.com/kubernetes/kubernetes.git \
   | cut -d/ -f3 \
   | sed 's/,$/\n/' \
@@ -32,6 +32,14 @@ ALL_K8S_VERSIONS=$(git ls-remote --refs --tags https://github.com/kubernetes/kub
 log "Detected ${ALL_K8S_VERSIONS// /, }"
 
 log "Checking local/remote existing branches..."
+git fetch --all --prune
+EXISTING_BRANCHES=$(git branch -a \
+  | sed 's|remotes/origin/||' \
+  | sed 's|\* ||' \
+  | sed 's|^+ ||' \
+  | grep -E '^v1\.[0-9]+\.[0-9]+$' \
+  | sort -Vu)
+
 EXISTING_BRANCHES=$(git branch -a \
   | sed 's|remotes/origin/||' \
   | sed 's|\* ||' \
