@@ -282,6 +282,14 @@
                 "null"
               ]
             },
+            "backoffLimitPerIndex": {
+              "description": "Specifies the limit for the number of retries within an index before marking this index as failed. When enabled the number of failures per index is kept in the pod's batch.kubernetes.io/job-index-failure-count annotation. It can only be set when Job's completionMode=Indexed, and the Pod's restart policy is Never. The field is immutable. This field is alpha-level. It can be used when the `JobBackoffLimitPerIndex` feature gate is enabled (disabled by default).",
+              "format": "int32",
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
             "completionMode": {
               "description": "completionMode specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`.\n\n`NonIndexed` means that the Job is considered complete when there have been .spec.completions successfully completed Pods. Each Pod completion is homologous to each other.\n\n`Indexed` means that the Pods of a Job get an associated completion index from 0 to (.spec.completions - 1), available in the annotation batch.kubernetes.io/job-completion-index. The Job is considered complete when there is one successfully completed Pod for each index. When value is `Indexed`, .spec.completions must be specified and `.spec.parallelism` must be less than or equal to 10^5. In addition, The Pod name takes the form `$(job-name)-$(index)-$(random-string)`, the Pod hostname takes the form `$(job-name)-$(index)`.\n\nMore completion modes can be added in the future. If the Job controller observes a mode that it doesn't recognize, which is possible during upgrades due to version skew, the controller skips updates for the Job.",
               "type": [
@@ -304,6 +312,14 @@
                 "null"
               ]
             },
+            "maxFailedIndexes": {
+              "description": "Specifies the maximal number of failed indexes before marking the Job as failed, when backoffLimitPerIndex is set. Once the number of failed indexes exceeds this number the entire Job is marked as Failed and its execution is terminated. When left as null the job continues execution of all of its indexes and is marked with the `Complete` Job condition. It can only be specified when backoffLimitPerIndex is set. It can be null or up to completions. It is required and must be less than or equal to 10^4 when is completions greater than 10^5. This field is alpha-level. It can be used when the `JobBackoffLimitPerIndex` feature gate is enabled (disabled by default).",
+              "format": "int32",
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
             "parallelism": {
               "description": "Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/",
               "format": "int32",
@@ -321,7 +337,7 @@
                     "description": "PodFailurePolicyRule describes how a pod failure is handled when the requirements are met. One of onExitCodes and onPodConditions, but not both, can be used in each rule.",
                     "properties": {
                       "action": {
-                        "description": "Specifies the action taken on a pod failure when the requirements are satisfied. Possible values are:\n\n- FailJob: indicates that the pod's job is marked as Failed and all\n  running pods are terminated.\n- Ignore: indicates that the counter towards the .backoffLimit is not\n  incremented and a replacement pod is created.\n- Count: indicates that the pod is handled in the default way - the\n  counter towards the .backoffLimit is incremented.\nAdditional values are considered to be added in the future. Clients should react to an unknown action by skipping the rule.",
+                        "description": "Specifies the action taken on a pod failure when the requirements are satisfied. Possible values are:\n\n- FailJob: indicates that the pod's job is marked as Failed and all\n  running pods are terminated.\n- FailIndex: indicates that the pod's index is marked as Failed and will\n  not be restarted.\n  This value is alpha-level. It can be used when the\n  `JobBackoffLimitPerIndex` feature gate is enabled (disabled by default).\n- Ignore: indicates that the counter towards the .backoffLimit is not\n  incremented and a replacement pod is created.\n- Count: indicates that the pod is handled in the default way - the\n  counter towards the .backoffLimit is incremented.\nAdditional values are considered to be added in the future. Clients should react to an unknown action by skipping the rule.",
                         "type": "string"
                       },
                       "onExitCodes": {
@@ -383,15 +399,13 @@
                             "null"
                           ]
                         },
-                        "type": [
-                          "array",
-                          "null"
-                        ],
+                        "type": "array",
                         "x-kubernetes-list-type": "atomic"
                       }
                     },
                     "required": [
-                      "action"
+                      "action",
+                      "onPodConditions"
                     ],
                     "type": [
                       "object",
@@ -410,6 +424,13 @@
                 "null"
               ]
             },
+            "podReplacementPolicy": {
+              "description": "podReplacementPolicy specifies when to create replacement Pods. Possible values are: - TerminatingOrFailed means that we recreate pods\n  when they are terminating (has a metadata.deletionTimestamp) or failed.\n- Failed means to wait until a previously created Pod is fully terminated (has phase\n  Failed or Succeeded) before creating a replacement Pod.\n\nWhen using podFailurePolicy, Failed is the the only allowed value. TerminatingOrFailed and Failed are allowed values when podFailurePolicy is not in use. This is an alpha field. Enable JobPodReplacementPolicy to be able to use this field.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
             "selector": {
               "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
               "properties": {
@@ -420,9 +441,7 @@
                     "properties": {
                       "key": {
                         "description": "key is the label key that the selector applies to.",
-                        "type": "string",
-                        "x-kubernetes-patch-merge-key": "key",
-                        "x-kubernetes-patch-strategy": "merge"
+                        "type": "string"
                       },
                       "operator": {
                         "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
@@ -997,9 +1016,7 @@
                                               "properties": {
                                                 "key": {
                                                   "description": "key is the label key that the selector applies to.",
-                                                  "type": "string",
-                                                  "x-kubernetes-patch-merge-key": "key",
-                                                  "x-kubernetes-patch-strategy": "merge"
+                                                  "type": "string"
                                                 },
                                                 "operator": {
                                                   "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
@@ -1063,9 +1080,7 @@
                                               "properties": {
                                                 "key": {
                                                   "description": "key is the label key that the selector applies to.",
-                                                  "type": "string",
-                                                  "x-kubernetes-patch-merge-key": "key",
-                                                  "x-kubernetes-patch-strategy": "merge"
+                                                  "type": "string"
                                                 },
                                                 "operator": {
                                                   "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
@@ -1177,9 +1192,7 @@
                                           "properties": {
                                             "key": {
                                               "description": "key is the label key that the selector applies to.",
-                                              "type": "string",
-                                              "x-kubernetes-patch-merge-key": "key",
-                                              "x-kubernetes-patch-strategy": "merge"
+                                              "type": "string"
                                             },
                                             "operator": {
                                               "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
@@ -1243,9 +1256,7 @@
                                           "properties": {
                                             "key": {
                                               "description": "key is the label key that the selector applies to.",
-                                              "type": "string",
-                                              "x-kubernetes-patch-merge-key": "key",
-                                              "x-kubernetes-patch-strategy": "merge"
+                                              "type": "string"
                                             },
                                             "operator": {
                                               "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
@@ -1357,9 +1368,7 @@
                                               "properties": {
                                                 "key": {
                                                   "description": "key is the label key that the selector applies to.",
-                                                  "type": "string",
-                                                  "x-kubernetes-patch-merge-key": "key",
-                                                  "x-kubernetes-patch-strategy": "merge"
+                                                  "type": "string"
                                                 },
                                                 "operator": {
                                                   "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
@@ -1423,9 +1432,7 @@
                                               "properties": {
                                                 "key": {
                                                   "description": "key is the label key that the selector applies to.",
-                                                  "type": "string",
-                                                  "x-kubernetes-patch-merge-key": "key",
-                                                  "x-kubernetes-patch-strategy": "merge"
+                                                  "type": "string"
                                                 },
                                                 "operator": {
                                                   "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
@@ -1537,9 +1544,7 @@
                                           "properties": {
                                             "key": {
                                               "description": "key is the label key that the selector applies to.",
-                                              "type": "string",
-                                              "x-kubernetes-patch-merge-key": "key",
-                                              "x-kubernetes-patch-strategy": "merge"
+                                              "type": "string"
                                             },
                                             "operator": {
                                               "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
@@ -1603,9 +1608,7 @@
                                           "properties": {
                                             "key": {
                                               "description": "key is the label key that the selector applies to.",
-                                              "type": "string",
-                                              "x-kubernetes-patch-merge-key": "key",
-                                              "x-kubernetes-patch-strategy": "merge"
+                                              "type": "string"
                                             },
                                             "operator": {
                                               "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
@@ -2888,6 +2891,13 @@
                               "null"
                             ]
                           },
+                          "restartPolicy": {
+                            "description": "RestartPolicy defines the restart behavior of individual containers in a pod. This field may only be set for init containers, and the only allowed value is \"Always\". For non-init containers or when this field is not specified, the restart behavior is defined by the Pod's restart policy and the container type. Setting the RestartPolicy as \"Always\" for the init container will have the following effect: this init container will be continually restarted on exit until all regular containers have terminated. Once all regular containers have completed, all init containers with restartPolicy \"Always\" will be shut down. This lifecycle differs from normal init containers and is often referred to as a \"sidecar\" container. Although this init container still starts in the init container sequence, it does not wait for the container to complete before proceeding to the next init container. Instead, the next init container starts immediately after this init container is started, or after any startupProbe has successfully completed.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
                           "securityContext": {
                             "description": "SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext.  When both are set, the values in SecurityContext take precedence.",
                             "properties": {
@@ -3018,7 +3028,7 @@
                                 "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.",
                                 "properties": {
                                   "localhostProfile": {
-                                    "description": "localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must only be set if type is \"Localhost\".",
+                                    "description": "localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must be set if type is \"Localhost\". Must NOT be set for any other type.",
                                     "type": [
                                       "string",
                                       "null"
@@ -3063,7 +3073,7 @@
                                     ]
                                   },
                                   "hostProcess": {
-                                    "description": "HostProcess determines if a container should be run as a 'Host Process' container. This field is alpha-level and will only be honored by components that enable the WindowsHostProcessContainers feature flag. Setting this field without the feature flag will result in errors when validating the Pod. All of a Pod's containers must have the same effective HostProcess value (it is not allowed to have a mix of HostProcess containers and non-HostProcess containers).  In addition, if HostProcess is true then HostNetwork must also be set to true.",
+                                    "description": "HostProcess determines if a container should be run as a 'Host Process' container. All of a Pod's containers must have the same effective HostProcess value (it is not allowed to have a mix of HostProcess containers and non-HostProcess containers). In addition, if HostProcess is true then HostNetwork must also be set to true.",
                                     "type": [
                                       "boolean",
                                       "null"
@@ -4702,6 +4712,13 @@
                               "null"
                             ]
                           },
+                          "restartPolicy": {
+                            "description": "Restart policy for the container to manage the restart behavior of each container within a pod. This may only be set for init containers. You cannot set this field on ephemeral containers.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
                           "securityContext": {
                             "description": "SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext.  When both are set, the values in SecurityContext take precedence.",
                             "properties": {
@@ -4832,7 +4849,7 @@
                                 "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.",
                                 "properties": {
                                   "localhostProfile": {
-                                    "description": "localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must only be set if type is \"Localhost\".",
+                                    "description": "localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must be set if type is \"Localhost\". Must NOT be set for any other type.",
                                     "type": [
                                       "string",
                                       "null"
@@ -4877,7 +4894,7 @@
                                     ]
                                   },
                                   "hostProcess": {
-                                    "description": "HostProcess determines if a container should be run as a 'Host Process' container. This field is alpha-level and will only be honored by components that enable the WindowsHostProcessContainers feature flag. Setting this field without the feature flag will result in errors when validating the Pod. All of a Pod's containers must have the same effective HostProcess value (it is not allowed to have a mix of HostProcess containers and non-HostProcess containers).  In addition, if HostProcess is true then HostNetwork must also be set to true.",
+                                    "description": "HostProcess determines if a container should be run as a 'Host Process' container. All of a Pod's containers must have the same effective HostProcess value (it is not allowed to have a mix of HostProcess containers and non-HostProcess containers). In addition, if HostProcess is true then HostNetwork must also be set to true.",
                                     "type": [
                                       "boolean",
                                       "null"
@@ -6547,6 +6564,13 @@
                               "null"
                             ]
                           },
+                          "restartPolicy": {
+                            "description": "RestartPolicy defines the restart behavior of individual containers in a pod. This field may only be set for init containers, and the only allowed value is \"Always\". For non-init containers or when this field is not specified, the restart behavior is defined by the Pod's restart policy and the container type. Setting the RestartPolicy as \"Always\" for the init container will have the following effect: this init container will be continually restarted on exit until all regular containers have terminated. Once all regular containers have completed, all init containers with restartPolicy \"Always\" will be shut down. This lifecycle differs from normal init containers and is often referred to as a \"sidecar\" container. Although this init container still starts in the init container sequence, it does not wait for the container to complete before proceeding to the next init container. Instead, the next init container starts immediately after this init container is started, or after any startupProbe has successfully completed.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
                           "securityContext": {
                             "description": "SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext.  When both are set, the values in SecurityContext take precedence.",
                             "properties": {
@@ -6677,7 +6701,7 @@
                                 "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.",
                                 "properties": {
                                   "localhostProfile": {
-                                    "description": "localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must only be set if type is \"Localhost\".",
+                                    "description": "localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must be set if type is \"Localhost\". Must NOT be set for any other type.",
                                     "type": [
                                       "string",
                                       "null"
@@ -6722,7 +6746,7 @@
                                     ]
                                   },
                                   "hostProcess": {
-                                    "description": "HostProcess determines if a container should be run as a 'Host Process' container. This field is alpha-level and will only be honored by components that enable the WindowsHostProcessContainers feature flag. Setting this field without the feature flag will result in errors when validating the Pod. All of a Pod's containers must have the same effective HostProcess value (it is not allowed to have a mix of HostProcess containers and non-HostProcess containers).  In addition, if HostProcess is true then HostNetwork must also be set to true.",
+                                    "description": "HostProcess determines if a container should be run as a 'Host Process' container. All of a Pod's containers must have the same effective HostProcess value (it is not allowed to have a mix of HostProcess containers and non-HostProcess containers). In addition, if HostProcess is true then HostNetwork must also be set to true.",
                                     "type": [
                                       "boolean",
                                       "null"
@@ -7232,7 +7256,7 @@
                                 ]
                               },
                               "resourceClaimTemplateName": {
-                                "description": "ResourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this pod.\n\nThe template will be used to create a new ResourceClaim, which will be bound to this pod. When this pod is deleted, the ResourceClaim will also be deleted. The name of the ResourceClaim will be <pod name>-<resource name>, where <resource name> is the PodResourceClaim.Name. Pod validation will reject the pod if the concatenated name is not valid for a ResourceClaim (e.g. too long).\n\nAn existing ResourceClaim with that name that is not owned by the pod will not be used for the pod to avoid using an unrelated resource by mistake. Scheduling and pod startup are then blocked until the unrelated ResourceClaim is removed.\n\nThis field is immutable and no changes will be made to the corresponding ResourceClaim by the control plane after creating the ResourceClaim.",
+                                "description": "ResourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this pod.\n\nThe template will be used to create a new ResourceClaim, which will be bound to this pod. When this pod is deleted, the ResourceClaim will also be deleted. The pod name and resource name, along with a generated component, will be used to form a unique name for the ResourceClaim, which will be recorded in pod.status.resourceClaimStatuses.\n\nThis field is immutable and no changes will be made to the corresponding ResourceClaim by the control plane after creating the ResourceClaim.",
                                 "type": [
                                   "string",
                                   "null"
@@ -7396,7 +7420,7 @@
                           "description": "SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.",
                           "properties": {
                             "localhostProfile": {
-                              "description": "localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must only be set if type is \"Localhost\".",
+                              "description": "localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must be set if type is \"Localhost\". Must NOT be set for any other type.",
                               "type": [
                                 "string",
                                 "null"
@@ -7483,7 +7507,7 @@
                               ]
                             },
                             "hostProcess": {
-                              "description": "HostProcess determines if a container should be run as a 'Host Process' container. This field is alpha-level and will only be honored by components that enable the WindowsHostProcessContainers feature flag. Setting this field without the feature flag will result in errors when validating the Pod. All of a Pod's containers must have the same effective HostProcess value (it is not allowed to have a mix of HostProcess containers and non-HostProcess containers).  In addition, if HostProcess is true then HostNetwork must also be set to true.",
+                              "description": "HostProcess determines if a container should be run as a 'Host Process' container. All of a Pod's containers must have the same effective HostProcess value (it is not allowed to have a mix of HostProcess containers and non-HostProcess containers). In addition, if HostProcess is true then HostNetwork must also be set to true.",
                               "type": [
                                 "boolean",
                                 "null"
@@ -7618,9 +7642,7 @@
                                   "properties": {
                                     "key": {
                                       "description": "key is the label key that the selector applies to.",
-                                      "type": "string",
-                                      "x-kubernetes-patch-merge-key": "key",
-                                      "x-kubernetes-patch-strategy": "merge"
+                                      "type": "string"
                                     },
                                     "operator": {
                                       "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
@@ -8672,9 +8694,7 @@
                                               "properties": {
                                                 "key": {
                                                   "description": "key is the label key that the selector applies to.",
-                                                  "type": "string",
-                                                  "x-kubernetes-patch-merge-key": "key",
-                                                  "x-kubernetes-patch-strategy": "merge"
+                                                  "type": "string"
                                                 },
                                                 "operator": {
                                                   "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",

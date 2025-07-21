@@ -100,7 +100,7 @@
       ]
     },
     "loadBalancerIP": {
-      "description": "Only applies to Service Type: LoadBalancer. This feature depends on whether the underlying cloud-provider supports specifying the loadBalancerIP when a load balancer is created. This field will be ignored if the cloud-provider does not support the feature. Deprecated: This field was under-specified and its meaning varies across implementations, and it cannot support dual-stack. As of Kubernetes v1.24, users are encouraged to use implementation-specific annotations when available. This field may be removed in a future API version.",
+      "description": "Only applies to Service Type: LoadBalancer. This feature depends on whether the underlying cloud-provider supports specifying the loadBalancerIP when a load balancer is created. This field will be ignored if the cloud-provider does not support the feature. Deprecated: This field was under-specified and its meaning varies across implementations. Using it is non-portable and it may not support dual-stack. Users are encouraged to use implementation-specific annotations when available.",
       "type": [
         "string",
         "null"
@@ -122,7 +122,7 @@
     "ports": {
       "description": "The list of ports that are exposed by this service. More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.9/_definitions.json#/definitions/io.k8s.api.core.v1.ServicePort"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.0/_definitions.json#/definitions/io.k8s.api.core.v1.ServicePort"
       },
       "type": [
         "array",
@@ -165,7 +165,7 @@
       ]
     },
     "sessionAffinityConfig": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.9/_definitions.json#/definitions/io.k8s.api.core.v1.SessionAffinityConfig",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.0/_definitions.json#/definitions/io.k8s.api.core.v1.SessionAffinityConfig",
       "description": "sessionAffinityConfig contains the configurations of session affinity."
     },
     "type": {

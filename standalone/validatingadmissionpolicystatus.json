@@ -1,5 +1,5 @@
 {
-  "description": "ValidatingAdmissionPolicyStatus represents the status of a ValidatingAdmissionPolicy.",
+  "description": "ValidatingAdmissionPolicyStatus represents the status of an admission validation policy.",
   "properties": {
     "conditions": {
       "description": "The conditions represent the latest available observations of a policy's current state.",

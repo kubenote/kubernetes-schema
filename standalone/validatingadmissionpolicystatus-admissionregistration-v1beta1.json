@@ -1,8 +1,8 @@
 {
-  "description": "NetworkPolicyStatus describes the current state of the NetworkPolicy.",
+  "description": "ValidatingAdmissionPolicyStatus represents the status of an admission validation policy.",
   "properties": {
     "conditions": {
-      "description": "conditions holds an array of metav1.Condition that describe the state of the NetworkPolicy. Current service state",
+      "description": "The conditions represent the latest available observations of a policy's current state.",
       "items": {
         "description": "Condition contains details for one aspect of the current state of this API Resource.",
         "properties": {
@@ -46,8 +46,7 @@
         "type": [
           "object",
           "null"
-        ],
-        "additionalProperties": false
+        ]
       },
       "type": [
         "array",
@@ -56,12 +55,55 @@
       "x-kubernetes-list-map-keys": [
         "type"
       ],
-      "x-kubernetes-list-type": "map",
-      "x-kubernetes-patch-merge-key": "type",
-      "x-kubernetes-patch-strategy": "merge"
+      "x-kubernetes-list-type": "map"
+    },
+    "observedGeneration": {
+      "description": "The generation observed by the controller.",
+      "format": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "typeChecking": {
+      "description": "TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy",
+      "properties": {
+        "expressionWarnings": {
+          "description": "The type checking warnings for each expression.",
+          "items": {
+            "description": "ExpressionWarning is a warning information that targets a specific expression.",
+            "properties": {
+              "fieldRef": {
+                "description": "The path to the field that refers the expression. For example, the reference to the expression of the first item of validations is \"spec.validations[0].expression\"",
+                "type": "string"
+              },
+              "warning": {
+                "description": "The content of type checking information in a human-readable form. Each line of the warning contains the type that the expression is checked against, followed by the type check error from the compiler.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "fieldRef",
+              "warning"
+            ],
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "type": [
+            "array",
+            "null"
+          ],
+          "x-kubernetes-list-type": "atomic"
+        }
+      },
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "type": "object",
-  "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }
