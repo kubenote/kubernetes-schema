@@ -1,4 +1,4 @@
-name: cron
+name: Fetch Version Schema
 on:
   workflow_dispatch:
     inputs:
@@ -12,7 +12,7 @@ jobs:
   gen:
     runs-on: ubuntu-latest
     env:
-      DEFAULT_PREFIX: master
+      DEFAULT_PREFIX: main
     steps:
       - name: make some space
         run: "sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost $AGENT_TOOLSDIRECTORY"
