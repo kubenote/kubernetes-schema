@@ -11,7 +11,7 @@
     "driverRequests": {
       "description": "DriverRequests describes all resources that are needed for the allocated claim. A single claim may use resources coming from different drivers. For each driver, this array has at most one entry which then may have one or more per-driver requests.\n\nMay be empty, in which case the claim can always be allocated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.12/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.DriverRequests"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.13/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.DriverRequests"
       },
       "type": [
         "array",
@@ -20,7 +20,7 @@
       "x-kubernetes-list-type": "atomic"
     },
     "generatedFrom": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.12/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceClaimParametersReference",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.13/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceClaimParametersReference",
       "description": "If this object was created from some other resource, then this links back to that resource. This field is used to find the in-tree representation of the claim parameters when the parameter reference of the claim refers to some unknown type."
     },
     "kind": {
@@ -34,7 +34,7 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.12/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object metadata"
     },
     "shareable": {
