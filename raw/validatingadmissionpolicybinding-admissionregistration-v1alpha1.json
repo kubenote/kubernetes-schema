@@ -22,11 +22,11 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.8/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata."
     },
     "spec": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.8/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.ValidatingAdmissionPolicyBindingSpec",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.9/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.ValidatingAdmissionPolicyBindingSpec",
       "description": "Specification of the desired behavior of the ValidatingAdmissionPolicyBinding."
     }
   },

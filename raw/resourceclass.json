@@ -26,15 +26,15 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.8/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object metadata"
     },
     "parametersRef": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.8/_definitions.json#/definitions/io.k8s.api.resource.v1alpha1.ResourceClassParametersReference",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.9/_definitions.json#/definitions/io.k8s.api.resource.v1alpha1.ResourceClassParametersReference",
       "description": "ParametersRef references an arbitrary separate object that may hold parameters that will be used by the driver when allocating a resource that uses this class. A dynamic resource driver can distinguish between parameters stored here and and those stored in ResourceClaimSpec."
     },
     "suitableNodes": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.8/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.9/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector",
       "description": "Only nodes matching the selector will be considered by the scheduler when trying to find a Node that fits a Pod when that Pod uses a ResourceClaim that has not been allocated yet.\n\nSetting this field is optional. If null, all nodes are candidates."
     }
   },
