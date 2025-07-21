@@ -64,7 +64,7 @@
       ]
     },
     "podFailurePolicy": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.1/_definitions.json#/definitions/io.k8s.api.batch.v1.PodFailurePolicy",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.10/_definitions.json#/definitions/io.k8s.api.batch.v1.PodFailurePolicy",
       "description": "Specifies the policy of handling failed pods. In particular, it allows to specify the set of actions and conditions which need to be satisfied to take the associated action. If empty, the default behaviour applies - the counter of failed pods, represented by the jobs's .status.failed field, is incremented and it is checked against the backoffLimit. This field cannot be used in combination with restartPolicy=OnFailure.\n\nThis field is beta-level. It can be used when the `JobPodFailurePolicy` feature gate is enabled (enabled by default)."
     },
     "podReplacementPolicy": {
@@ -75,7 +75,7 @@
       ]
     },
     "selector": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.1/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.10/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector",
       "description": "A label query over pods that should match the pod count. Normally, the system sets this field for you. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors"
     },
     "suspend": {
@@ -86,7 +86,7 @@
       ]
     },
     "template": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.1/_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateSpec",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.10/_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateSpec",
       "description": "Describes the pod that will be created when executing a job. The only allowed template.spec.restartPolicy values are \"Never\" or \"OnFailure\". More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/"
     },
     "ttlSecondsAfterFinished": {

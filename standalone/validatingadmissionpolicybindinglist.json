@@ -801,6 +801,9 @@
       ]
     }
   },
+  "required": [
+    "items"
+  ],
   "type": "object",
   "x-kubernetes-group-version-kind": [
     {
