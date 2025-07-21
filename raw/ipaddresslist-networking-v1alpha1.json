@@ -14,7 +14,7 @@
     "items": {
       "description": "items is the list of IPAddresses.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.15/_definitions.json#/definitions/io.k8s.api.networking.v1alpha1.IPAddress"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.2/_definitions.json#/definitions/io.k8s.api.networking.v1alpha1.IPAddress"
       },
       "type": [
         "array",
@@ -32,7 +32,7 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.15/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },
