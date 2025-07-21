@@ -24,6 +24,7 @@ cd "$REPO_DIR"
 log "Fetching Kubernetes versions >= v1.19.0..."
 ALL_K8S_VERSIONS=$(git ls-remote --refs --tags https://github.com/kubernetes/kubernetes.git \
   | cut -d/ -f3 \
+  | sed 's/,$/\n/' \
   | grep -E '^v1\.[0-9]+\.[0-9]+$' \
   | grep -vE '^v1\.(0|1[0-8])' \
   | sort -Vu)
