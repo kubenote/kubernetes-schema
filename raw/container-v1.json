@@ -32,7 +32,7 @@
     "env": {
       "description": "List of environment variables to set in the container. Cannot be updated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
       },
       "type": [
         "array",
@@ -48,7 +48,7 @@
     "envFrom": {
       "description": "List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
       },
       "type": [
         "array",
@@ -71,11 +71,11 @@
       ]
     },
     "lifecycle": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle",
       "description": "Actions that the management system should take in response to container lifecycle events. Cannot be updated."
     },
     "livenessProbe": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
       "description": "Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes"
     },
     "name": {
@@ -88,7 +88,7 @@
     "ports": {
       "description": "List of ports to expose from the container. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default \"0.0.0.0\" address inside a container will be accessible from the network. Modifying this array with strategic merge patch may corrupt the data. For more information See https://github.com/kubernetes/kubernetes/issues/108255. Cannot be updated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort"
       },
       "type": [
         "array",
@@ -103,13 +103,13 @@
       "x-kubernetes-patch-strategy": "merge"
     },
     "readinessProbe": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
       "description": "Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes"
     },
     "resizePolicy": {
       "description": "Resources resize policy for the container.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerResizePolicy"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerResizePolicy"
       },
       "type": [
         "array",
@@ -118,7 +118,7 @@
       "x-kubernetes-list-type": "atomic"
     },
     "resources": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements",
       "description": "Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
     },
     "restartPolicy": {
@@ -129,11 +129,11 @@
       ]
     },
     "securityContext": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.SecurityContext",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.SecurityContext",
       "description": "SecurityContext defines the security options the container should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
     },
     "startupProbe": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
       "description": "StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes"
     },
     "stdin": {
@@ -174,7 +174,7 @@
     "volumeDevices": {
       "description": "volumeDevices is the list of block devices to be used by the container.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeDevice"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeDevice"
       },
       "type": [
         "array",
@@ -190,7 +190,7 @@
     "volumeMounts": {
       "description": "Pod volumes to mount into the container's filesystem. Cannot be updated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.11/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.2/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
       },
       "type": [
         "array",
