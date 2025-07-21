@@ -22,15 +22,15 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.11/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.12/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object metadata"
     },
     "spec": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.11/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.PodSchedulingContextSpec",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.12/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.PodSchedulingContextSpec",
       "description": "Spec describes where resources for the Pod are needed."
     },
     "status": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.11/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.PodSchedulingContextStatus",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.12/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.PodSchedulingContextStatus",
       "description": "Status describes where resources for the Pod can be allocated."
     }
   },
