@@ -9,7 +9,7 @@
       ]
     },
     "parametersRef": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.11/_definitions.json#/definitions/io.k8s.api.resource.v1alpha1.ResourceClaimParametersReference",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.12/_definitions.json#/definitions/io.k8s.api.resource.v1alpha1.ResourceClaimParametersReference",
       "description": "ParametersRef references a separate object with arbitrary parameters that will be used by the driver when allocating a resource for the claim.\n\nThe object must be in the same namespace as the ResourceClaim."
     },
     "resourceClassName": {
