@@ -46,3 +46,6 @@ for K8S_VERSION in $VERSIONS_TO_BUILD; do
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}" --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
   fi
 done
+
+echo "Schema directory structure:"
+find schemas -type d
