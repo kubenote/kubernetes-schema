@@ -9,7 +9,7 @@
       ]
     },
     "source": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.8/_definitions.json#/definitions/io.k8s.api.core.v1.ClaimSource",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.9/_definitions.json#/definitions/io.k8s.api.core.v1.ClaimSource",
       "description": "Source describes where to find the ResourceClaim."
     }
   },
