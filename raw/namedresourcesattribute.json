@@ -17,7 +17,7 @@
       ]
     },
     "intSlice": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.7/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.NamedResourcesIntSlice",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.8/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.NamedResourcesIntSlice",
       "description": "IntSliceValue is an array of 64-bit integers."
     },
     "name": {
@@ -28,7 +28,7 @@
       ]
     },
     "quantity": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.7/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.8/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity",
       "description": "QuantityValue is a quantity."
     },
     "string": {
@@ -39,7 +39,7 @@
       ]
     },
     "stringSlice": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.7/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.NamedResourcesStringSlice",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.8/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.NamedResourcesStringSlice",
       "description": "StringSliceValue is an array of strings."
     },
     "version": {
