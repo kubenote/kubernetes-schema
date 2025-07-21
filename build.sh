@@ -49,9 +49,14 @@ EXISTING_BRANCHES=$(git branch -a \
 
 log "Existing branches: ${EXISTING_BRANCHES// /, }"
 
-K8S_VERSIONS=$(comm -23 \
-  <(echo "$ALL_K8S_VERSIONS" | tr ',' '\n' | sort -u) \
-  <(echo "$EXISTING_BRANCHES" | tr ',' '\n' | sort -u))
+K8S_VERSIONS=""
+for version in $ALL_K8S_VERSIONS; do
+  if ! grep -qxF "$version" <<< "$EXISTING_BRANCHES"; then
+    K8S_VERSIONS+="$version"$'\n'
+  fi
+done
+K8S_VERSIONS=$(echo "$K8S_VERSIONS" | sort -u)
+
 
 if [[ -z "$K8S_VERSIONS" ]]; then
   log "No new versions to process."
