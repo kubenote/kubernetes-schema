@@ -9,7 +9,7 @@
       ]
     },
     "resource": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.6/_definitions.json#/definitions/io.k8s.api.storagemigration.v1alpha1.GroupVersionResource",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.7/_definitions.json#/definitions/io.k8s.api.storagemigration.v1alpha1.GroupVersionResource",
       "description": "The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable."
     }
   },
