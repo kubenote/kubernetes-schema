@@ -11,7 +11,7 @@
     "devices": {
       "description": "Devices lists some or all of the devices in this pool.\n\nMust not have more than 128 entries.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.3/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.Device"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.4/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.Device"
       },
       "type": [
         "array",
@@ -34,11 +34,11 @@
       ]
     },
     "nodeSelector": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.3/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.4/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector",
       "description": "NodeSelector defines which nodes have access to the resources in the pool, when that pool is not limited to a single node.\n\nMust use exactly one term.\n\nExactly one of NodeName, NodeSelector and AllNodes must be set."
     },
     "pool": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.3/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.ResourcePool",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.31.4/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.ResourcePool",
       "description": "Pool describes the pool that this ResourceSlice belongs to."
     }
   },
