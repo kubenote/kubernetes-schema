@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: make some space
         run: "sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/share/boost $AGENT_TOOLSDIRECTORY"
+
+      - name: checkout
+        uses: actions/checkout@v2
   
       # Override PREFIX if run manually
       - name: Set PREFIX
