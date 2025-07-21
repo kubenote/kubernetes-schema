@@ -27,25 +27,36 @@ for K8S_VERSION in $VERSIONS_TO_BUILD; do
   PREFIX="https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/${K8S_VERSION}/_definitions.json"
 
   if [ ! -d "schemas/${K8S_VERSION}-standalone-strict" ]; then
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone-strict" --expanded --kubernetes --stand-alone --strict "${SCHEMA}"
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone-strict" --kubernetes --stand-alone --strict "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone-strict" --expanded --kubernetes --stand-alone --strict "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone-strict" --kubernetes --stand-alone --strict "${SCHEMA}"
   fi
 
   if [ ! -d "schemas/${K8S_VERSION}-standalone" ]; then
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone" --expanded --kubernetes --stand-alone "${SCHEMA}"
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-standalone" --kubernetes --stand-alone "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone" --expanded --kubernetes --stand-alone "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone" --kubernetes --stand-alone "${SCHEMA}"
   fi
 
   if [ ! -d "schemas/${K8S_VERSION}-local" ]; then
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-local" --expanded --kubernetes "${SCHEMA}"
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}-local" --kubernetes "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/local" --expanded --kubernetes "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/local" --kubernetes "${SCHEMA}"
   fi
 
   if [ ! -d "schemas/${K8S_VERSION}" ]; then
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}" --expanded --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}" --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --expanded --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
+    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
   fi
 done
 
-echo "Schema directory structure:"
-find schemas -type d
+  # Move generated content to root and push as a branch
+  git checkout --orphan "$K8S_VERSION"
+  git rm -rf . > /dev/null 2>&1 || true
+
+  cp -r "schemas/${K8S_VERSION}/." .
+  git add .
+  git commit -m "Add schemas for $K8S_VERSION"
+  git push origin "$K8S_VERSION"
+
+  # Clean up the working directory after push
+  git checkout main
+  git clean -fdx
+
