@@ -63,20 +63,20 @@ done
 git config --global user.email "r.rakeda@gmail.com"
 git config --global user.name "Brandon Massie"
 
-find schemas -type d
+find schemas
 # Move generated content to root and push as a branch
 git checkout --orphan "$K8S_VERSION"
 find . -mindepth 1 -maxdepth 1 ! -name 'schemas' ! -name '.git' -exec rm -rf {} +
 
-find schemas -type d
+find schemas
 
 cp -r schemas/${K8S_VERSION}/* .
 
-find schemas -type d
+find schemas
 
 rm -r schemas
 
-find . -type d
+find .
 
 
 git add local raw standalone-strict standalone
