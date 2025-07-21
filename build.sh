@@ -67,7 +67,11 @@ ls schemas
 # Move generated content to root and push as a branch
 git checkout --orphan "$K8S_VERSION"
 find . -mindepth 1 -maxdepth 1 ! -name 'schemas' ! -name '.git' -exec rm -rf {} +
+
 cp -r "schemas/${K8S_VERSION}"/* .
+rm -r schemas
+
+git add local raw standalone-strict standalone
 git add .
 git commit -m "Add schemas for $K8S_VERSION"
 git push origin "$K8S_VERSION"
