@@ -14,7 +14,7 @@
     "items": {
       "description": "Items is the list of resource claims.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.8/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceClaim"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.9/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceClaim"
       },
       "type": [
         "array",
@@ -32,7 +32,7 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.8/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata"
     }
   },
