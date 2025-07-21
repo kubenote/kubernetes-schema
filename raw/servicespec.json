@@ -124,7 +124,7 @@
     "ports": {
       "description": "The list of ports that are exposed by this service. More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.7/_definitions.json#/definitions/io.k8s.api.core.v1.ServicePort"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.0/_definitions.json#/definitions/io.k8s.api.core.v1.ServicePort"
       },
       "type": [
         "array",
@@ -167,11 +167,11 @@
       ]
     },
     "sessionAffinityConfig": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.7/_definitions.json#/definitions/io.k8s.api.core.v1.SessionAffinityConfig",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.0/_definitions.json#/definitions/io.k8s.api.core.v1.SessionAffinityConfig",
       "description": "sessionAffinityConfig contains the configurations of session affinity."
     },
     "trafficDistribution": {
-      "description": "TrafficDistribution offers a way to express preferences for how traffic is distributed to Service endpoints. Implementations can use this field as a hint, but are not required to guarantee strict adherence. If the field is not set, the implementation will apply its default routing strategy. If set to \"PreferClose\", implementations should prioritize endpoints that are topologically close (e.g., same zone). This is a beta field and requires enabling ServiceTrafficDistribution feature.",
+      "description": "TrafficDistribution offers a way to express preferences for how traffic is distributed to Service endpoints. Implementations can use this field as a hint, but are not required to guarantee strict adherence. If the field is not set, the implementation will apply its default routing strategy. If set to \"PreferClose\", implementations should prioritize endpoints that are in the same zone.",
       "type": [
         "string",
         "null"

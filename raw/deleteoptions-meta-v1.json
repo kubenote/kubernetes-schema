@@ -62,6 +62,7 @@
         "rbac.authorization.k8s.io/v1beta1",
         "resource.k8s.io/v1alpha3",
         "resource.k8s.io/v1beta1",
+        "resource.k8s.io/v1beta2",
         "scheduling.k8s.io/v1",
         "scheduling.k8s.io/v1alpha1",
         "scheduling.k8s.io/v1beta1",
@@ -118,7 +119,7 @@
       ]
     },
     "preconditions": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.7/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions",
       "description": "Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned."
     },
     "propagationPolicy": {
@@ -400,6 +401,11 @@
       "group": "resource.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1beta1"
+    },
+    {
+      "group": "resource.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1beta2"
     },
     {
       "group": "scheduling.k8s.io",
