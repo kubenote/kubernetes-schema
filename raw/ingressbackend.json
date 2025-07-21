@@ -2,19 +2,12 @@
   "description": "IngressBackend describes all endpoints for a given service and port.",
   "properties": {
     "resource": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.TypedLocalObjectReference",
-      "description": "Resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, serviceName and servicePort must not be specified."
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.TypedLocalObjectReference",
+      "description": "Resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with \"Service\"."
     },
-    "serviceName": {
-      "description": "Specifies the name of the referenced service.",
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "servicePort": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString",
-      "description": "Specifies the port of the referenced service."
+    "service": {
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.networking.v1.IngressServiceBackend",
+      "description": "Service references a Service as a Backend. This is a mutually exclusive setting with \"Resource\"."
     }
   },
   "type": "object",

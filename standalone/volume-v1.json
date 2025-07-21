@@ -164,7 +164,8 @@
           "type": [
             "object",
             "null"
-          ]
+          ],
+          "x-kubernetes-map-type": "atomic"
         },
         "user": {
           "description": "Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
@@ -213,7 +214,8 @@
           "type": [
             "object",
             "null"
-          ]
+          ],
+          "x-kubernetes-map-type": "atomic"
         },
         "volumeID": {
           "description": "volume id used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md",
@@ -323,7 +325,8 @@
           "type": [
             "object",
             "null"
-          ]
+          ],
+          "x-kubernetes-map-type": "atomic"
         },
         "readOnly": {
           "description": "Specifies a read-only configuration for the volume. Defaults to false (read/write).",
@@ -391,7 +394,8 @@
                 "type": [
                   "object",
                   "null"
-                ]
+                ],
+                "x-kubernetes-map-type": "atomic"
               },
               "mode": {
                 "description": "Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
@@ -442,7 +446,8 @@
                 "type": [
                   "object",
                   "null"
-                ]
+                ],
+                "x-kubernetes-map-type": "atomic"
               }
             },
             "required": [
@@ -631,6 +636,13 @@
                           "null"
                         ]
                       },
+                      "subresource": {
+                        "description": "Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
                       "time": {
                         "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
                         "format": "date-time",
@@ -709,7 +721,8 @@
                     "type": [
                       "object",
                       "null"
-                    ]
+                    ],
+                    "x-kubernetes-map-type": "atomic"
                   },
                   "type": [
                     "array",
@@ -787,7 +800,37 @@
                   "type": [
                     "object",
                     "null"
-                  ]
+                  ],
+                  "x-kubernetes-map-type": "atomic"
+                },
+                "dataSourceRef": {
+                  "description": "TypedLocalObjectReference contains enough information to let you locate the typed referenced object inside the same namespace.",
+                  "properties": {
+                    "apiGroup": {
+                      "description": "APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "kind": {
+                      "description": "Kind is the type of resource being referenced",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name is the name of resource being referenced",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "name"
+                  ],
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "x-kubernetes-map-type": "atomic"
                 },
                 "resources": {
                   "description": "ResourceRequirements describes the compute resource requirements.",
@@ -1054,7 +1097,8 @@
           "type": [
             "object",
             "null"
-          ]
+          ],
+          "x-kubernetes-map-type": "atomic"
         }
       },
       "required": [
@@ -1288,7 +1332,8 @@
           "type": [
             "object",
             "null"
-          ]
+          ],
+          "x-kubernetes-map-type": "atomic"
         },
         "targetPortal": {
           "description": "iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).",
@@ -1520,7 +1565,8 @@
                           "type": [
                             "object",
                             "null"
-                          ]
+                          ],
+                          "x-kubernetes-map-type": "atomic"
                         },
                         "mode": {
                           "description": "Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
@@ -1571,7 +1617,8 @@
                           "type": [
                             "object",
                             "null"
-                          ]
+                          ],
+                          "x-kubernetes-map-type": "atomic"
                         }
                       },
                       "required": [
@@ -1808,7 +1855,8 @@
           "type": [
             "object",
             "null"
-          ]
+          ],
+          "x-kubernetes-map-type": "atomic"
         },
         "user": {
           "description": "The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it",
@@ -1866,7 +1914,8 @@
               ]
             }
           },
-          "type": "object"
+          "type": "object",
+          "x-kubernetes-map-type": "atomic"
         },
         "sslEnabled": {
           "description": "Flag to enable/disable SSL communication with Gateway, default false",
@@ -2009,7 +2058,8 @@
           "type": [
             "object",
             "null"
-          ]
+          ],
+          "x-kubernetes-map-type": "atomic"
         },
         "volumeName": {
           "description": "VolumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.",

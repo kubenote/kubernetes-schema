@@ -27,7 +27,8 @@
       "type": [
         "object",
         "null"
-      ]
+      ],
+      "x-kubernetes-map-type": "atomic"
     },
     "service": {
       "description": "IngressServiceBackend references a Kubernetes Service as a Backend.",

@@ -2,7 +2,7 @@
   "description": "An EphemeralContainer is a container that may be added temporarily to an existing pod for user-initiated activities such as debugging. Ephemeral containers have no resource or scheduling guarantees, and they will not be restarted when they exit or when a pod is removed or restarted. If an ephemeral container causes a pod to exceed its resource allocation, the pod may be evicted. Ephemeral containers may not be added by directly updating the pod spec. They must be added via the pod's ephemeralcontainers subresource, and they will appear in the pod spec once added. This is an alpha feature enabled by the EphemeralContainers feature flag.",
   "properties": {
     "args": {
-      "description": "Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
+      "description": "Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
       "items": {
         "type": [
           "string",
@@ -15,7 +15,7 @@
       ]
     },
     "command": {
-      "description": "Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
+      "description": "Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
       "items": {
         "type": [
           "string",
@@ -30,7 +30,7 @@
     "env": {
       "description": "List of environment variables to set in the container. Cannot be updated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
       },
       "type": [
         "array",
@@ -42,7 +42,7 @@
     "envFrom": {
       "description": "List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
       },
       "type": [
         "array",
@@ -64,11 +64,11 @@
       ]
     },
     "lifecycle": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle",
       "description": "Lifecycle is not allowed for ephemeral containers."
     },
     "livenessProbe": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
       "description": "Probes are not allowed for ephemeral containers."
     },
     "name": {
@@ -81,7 +81,7 @@
     "ports": {
       "description": "Ports are not allowed for ephemeral containers.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort"
       },
       "type": [
         "array",
@@ -89,19 +89,19 @@
       ]
     },
     "readinessProbe": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
       "description": "Probes are not allowed for ephemeral containers."
     },
     "resources": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements",
       "description": "Resources are not allowed for ephemeral containers. Ephemeral containers use spare resources already allocated to the pod."
     },
     "securityContext": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.SecurityContext",
-      "description": "SecurityContext is not allowed for ephemeral containers."
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.SecurityContext",
+      "description": "Optional: SecurityContext defines the security options the ephemeral container should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext."
     },
     "startupProbe": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.Probe",
       "description": "Probes are not allowed for ephemeral containers."
     },
     "stdin": {
@@ -149,7 +149,7 @@
     "volumeDevices": {
       "description": "volumeDevices is the list of block devices to be used by the container.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeDevice"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeDevice"
       },
       "type": [
         "array",
@@ -161,7 +161,7 @@
     "volumeMounts": {
       "description": "Pod volumes to mount into the container's filesystem. Cannot be updated.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
       },
       "type": [
         "array",

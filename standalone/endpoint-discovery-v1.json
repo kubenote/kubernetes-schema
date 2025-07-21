@@ -161,7 +161,8 @@
       "type": [
         "object",
         "null"
-      ]
+      ],
+      "x-kubernetes-map-type": "atomic"
     },
     "zone": {
       "description": "zone is the name of the Zone this endpoint exists in.",

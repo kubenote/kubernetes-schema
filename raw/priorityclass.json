@@ -33,7 +33,7 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.21.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     },
     "preemptionPolicy": {
@@ -60,7 +60,7 @@
     {
       "group": "scheduling.k8s.io",
       "kind": "PriorityClass",
-      "version": "v1beta1"
+      "version": "v1alpha1"
     }
   ],
   "$schema": "http://json-schema.org/schema#"
