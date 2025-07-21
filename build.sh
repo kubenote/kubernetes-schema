@@ -33,23 +33,28 @@ OPENAPI2JSONSCHEMABIN="docker run --rm -i -u $(id -u):$(id -g) -v ${PWD}:/out/sc
 for K8S_VERSION in $VERSIONS_TO_BUILD; do
   SCHEMA="https://raw.githubusercontent.com/kubernetes/kubernetes/${K8S_VERSION}/api/openapi-spec/swagger.json"
   PREFIX="https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/${K8S_VERSION}/_definitions.json"
-
+  mkdir "schemas/${K8S_VERSION}"
+  
   if [ ! -d "schemas/${K8S_VERSION}/standalone-strict" ]; then
+    mkdir "schemas/${K8S_VERSION}/standalone-strict"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone-strict" --expanded --kubernetes --stand-alone --strict "${SCHEMA}"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone-strict" --kubernetes --stand-alone --strict "${SCHEMA}"
   fi
 
   if [ ! -d "schemas/${K8S_VERSION}/standalone" ]; then
+    mkdir "schemas/${K8S_VERSION}/standalone"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone" --expanded --kubernetes --stand-alone "${SCHEMA}"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/standalone" --kubernetes --stand-alone "${SCHEMA}"
   fi
 
   if [ ! -d "schemas/${K8S_VERSION}/local" ]; then
+    mkdir "schemas/${K8S_VERSION}/local"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/local" --expanded --kubernetes "${SCHEMA}"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/local" --kubernetes "${SCHEMA}"
   fi
 
   if [ ! -d "schemas/${K8S_VERSION}/raw" ]; then
+    mkdir "schemas/${K8S_VERSION}/raw"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --expanded --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
   fi
