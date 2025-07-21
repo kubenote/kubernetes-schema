@@ -70,7 +70,7 @@ find . -mindepth 1 -maxdepth 1 ! -name 'schemas' ! -name '.git' -exec rm -rf {} 
 
 find schemas -type d
 
-cp -r "schemas/${K8S_VERSION}"/* .
+cp -r schemas/${K8S_VERSION}/* .
 
 find schemas -type d
 
