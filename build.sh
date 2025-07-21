@@ -47,16 +47,19 @@ for K8S_VERSION in $VERSIONS_TO_BUILD; do
   fi
 done
 
-  # Move generated content to root and push as a branch
-  git checkout --orphan "$K8S_VERSION"
-  git rm -rf . > /dev/null 2>&1 || true
+git config --global user.email "r.rakeda@gmail.com"
+git config --global user.name "Brandon Massie"
 
-  cp -r "schemas/${K8S_VERSION}/." .
-  git add .
-  git commit -m "Add schemas for $K8S_VERSION"
-  git push origin "$K8S_VERSION"
+# Move generated content to root and push as a branch
+git checkout --orphan "$K8S_VERSION"
+git rm -rf . > /dev/null 2>&1 || true
 
-  # Clean up the working directory after push
-  git checkout main
-  git clean -fdx
+cp -r "schemas/${K8S_VERSION}/." .
+git add .
+git commit -m "Add schemas for $K8S_VERSION"
+git push origin "$K8S_VERSION"
+
+# Clean up the working directory after push
+git checkout main
+git clean -fdx
 
