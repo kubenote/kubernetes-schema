@@ -32,7 +32,7 @@
     "selectors": {
       "description": "Selectors contains the same selection criteria as a ResourceClaim. Currently, CEL expressions are supported. All of these selectors must be satisfied.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.0/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.DeviceSelector"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.api.resource.v1alpha3.DeviceSelector"
       },
       "type": [
         "array",

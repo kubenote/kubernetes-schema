@@ -10,7 +10,7 @@
     },
     "attributes": {
       "additionalProperties": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.0/_definitions.json#/definitions/io.k8s.api.resource.v1beta2.DeviceAttribute"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.api.resource.v1beta2.DeviceAttribute"
       },
       "description": "Attributes defines the set of attributes for this device. The name of each attribute must be unique in that set.\n\nThe maximum number of attributes and capacities combined is 32.",
       "type": [
@@ -20,7 +20,7 @@
     },
     "capacity": {
       "additionalProperties": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.0/_definitions.json#/definitions/io.k8s.api.resource.v1beta2.DeviceCapacity"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.api.resource.v1beta2.DeviceCapacity"
       },
       "description": "Capacity defines the set of capacities for this device. The name of each capacity must be unique in that set.\n\nThe maximum number of attributes and capacities combined is 32.",
       "type": [
@@ -31,7 +31,7 @@
     "consumesCounters": {
       "description": "ConsumesCounters defines a list of references to sharedCounters and the set of counters that the device will consume from those counter sets.\n\nThere can only be a single entry per counterSet.\n\nThe total number of device counter consumption entries must be <= 32. In addition, the total number in the entire ResourceSlice must be <= 1024 (for example, 64 devices with 16 counters each).",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.0/_definitions.json#/definitions/io.k8s.api.resource.v1beta2.DeviceCounterConsumption"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.api.resource.v1beta2.DeviceCounterConsumption"
       },
       "type": [
         "array",
@@ -54,13 +54,13 @@
       ]
     },
     "nodeSelector": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.0/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector",
       "description": "NodeSelector defines the nodes where the device is available.\n\nMust use exactly one term.\n\nMust only be set if Spec.PerDeviceNodeSelection is set to true. At most one of NodeName, NodeSelector and AllNodes can be set."
     },
     "taints": {
       "description": "If specified, these are the driver-defined taints.\n\nThe maximum number of taints is 4.\n\nThis is an alpha field and requires enabling the DRADeviceTaints feature gate.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.0/_definitions.json#/definitions/io.k8s.api.resource.v1beta2.DeviceTaint"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.33.1/_definitions.json#/definitions/io.k8s.api.resource.v1beta2.DeviceTaint"
       },
       "type": [
         "array",
