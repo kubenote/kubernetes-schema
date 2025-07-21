@@ -32,7 +32,7 @@ OPENAPI2JSONSCHEMABIN="docker run --rm -i -u $(id -u):$(id -g) -v ${PWD}/schemas
 # Loop and generate schemas for missing versions
 for K8S_VERSION in $VERSIONS_TO_BUILD; do
   SCHEMA="https://raw.githubusercontent.com/kubernetes/kubernetes/${K8S_VERSION}/api/openapi-spec/swagger.json"
-  PREFIX="https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/${K8S_VERSION}/_definitions.json"
+  PREFIX="https://raw.githubusercontent.com/kubenote/kubernetes-schema/refs/heads/${K8S_VERSION}/raw/_definitions.json"
   mkdir "schemas/${K8S_VERSION}"
   
   if [ ! -d "schemas/${K8S_VERSION}/standalone-strict" ]; then
