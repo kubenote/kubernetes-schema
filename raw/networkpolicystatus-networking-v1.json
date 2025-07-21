@@ -4,7 +4,7 @@
     "conditions": {
       "description": "conditions holds an array of metav1.Condition that describe the state of the NetworkPolicy. Current service state",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.5/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
       },
       "type": [
         "array",
