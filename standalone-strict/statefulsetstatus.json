@@ -126,7 +126,8 @@
     }
   },
   "required": [
-    "replicas"
+    "replicas",
+    "availableReplicas"
   ],
   "type": "object",
   "additionalProperties": false,
