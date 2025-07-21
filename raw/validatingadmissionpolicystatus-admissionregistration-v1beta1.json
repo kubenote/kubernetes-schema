@@ -4,7 +4,7 @@
     "conditions": {
       "description": "The conditions represent the latest available observations of a policy's current state.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.12/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
       },
       "type": [
         "array",
@@ -24,7 +24,7 @@
       ]
     },
     "typeChecking": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.12/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.TypeChecking",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.13/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.TypeChecking",
       "description": "The results of type checking for each expression. Presence of this field indicates the completion of the type checking."
     }
   },
