@@ -166,11 +166,6 @@
       "version": "v1beta1"
     },
     {
-      "group": "batch",
-      "kind": "DeleteOptions",
-      "version": "v2alpha1"
-    },
-    {
       "group": "certificates.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1"
@@ -193,7 +188,7 @@
     {
       "group": "discovery.k8s.io",
       "kind": "DeleteOptions",
-      "version": "v1alpha1"
+      "version": "v1"
     },
     {
       "group": "discovery.k8s.io",
@@ -259,6 +254,11 @@
       "group": "node.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1beta1"
+    },
+    {
+      "group": "policy",
+      "kind": "DeleteOptions",
+      "version": "v1"
     },
     {
       "group": "policy",

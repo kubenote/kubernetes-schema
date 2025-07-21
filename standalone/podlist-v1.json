@@ -599,8 +599,74 @@
                                   ],
                                   "x-kubernetes-map-type": "atomic"
                                 },
+                                "namespaceSelector": {
+                                  "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
+                                  "properties": {
+                                    "matchExpressions": {
+                                      "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                      "items": {
+                                        "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                        "properties": {
+                                          "key": {
+                                            "description": "key is the label key that the selector applies to.",
+                                            "type": "string",
+                                            "x-kubernetes-patch-merge-key": "key",
+                                            "x-kubernetes-patch-strategy": "merge"
+                                          },
+                                          "operator": {
+                                            "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                            "type": "string"
+                                          },
+                                          "values": {
+                                            "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                            "items": {
+                                              "type": [
+                                                "string",
+                                                "null"
+                                              ]
+                                            },
+                                            "type": [
+                                              "array",
+                                              "null"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "key",
+                                          "operator"
+                                        ],
+                                        "type": [
+                                          "object",
+                                          "null"
+                                        ]
+                                      },
+                                      "type": [
+                                        "array",
+                                        "null"
+                                      ]
+                                    },
+                                    "matchLabels": {
+                                      "additionalProperties": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "x-kubernetes-map-type": "atomic"
+                                },
                                 "namespaces": {
-                                  "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
+                                  "description": "namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means \"this pod's namespace\"",
                                   "items": {
                                     "type": [
                                       "string",
@@ -713,8 +779,74 @@
                               ],
                               "x-kubernetes-map-type": "atomic"
                             },
+                            "namespaceSelector": {
+                              "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
+                              "properties": {
+                                "matchExpressions": {
+                                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                  "items": {
+                                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                    "properties": {
+                                      "key": {
+                                        "description": "key is the label key that the selector applies to.",
+                                        "type": "string",
+                                        "x-kubernetes-patch-merge-key": "key",
+                                        "x-kubernetes-patch-strategy": "merge"
+                                      },
+                                      "operator": {
+                                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                        "type": "string"
+                                      },
+                                      "values": {
+                                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "key",
+                                      "operator"
+                                    ],
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ]
+                                  },
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ]
+                                },
+                                "matchLabels": {
+                                  "additionalProperties": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "x-kubernetes-map-type": "atomic"
+                            },
                             "namespaces": {
-                              "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
+                              "description": "namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means \"this pod's namespace\"",
                               "items": {
                                 "type": [
                                   "string",
@@ -827,8 +959,74 @@
                                   ],
                                   "x-kubernetes-map-type": "atomic"
                                 },
+                                "namespaceSelector": {
+                                  "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
+                                  "properties": {
+                                    "matchExpressions": {
+                                      "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                      "items": {
+                                        "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                        "properties": {
+                                          "key": {
+                                            "description": "key is the label key that the selector applies to.",
+                                            "type": "string",
+                                            "x-kubernetes-patch-merge-key": "key",
+                                            "x-kubernetes-patch-strategy": "merge"
+                                          },
+                                          "operator": {
+                                            "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                            "type": "string"
+                                          },
+                                          "values": {
+                                            "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                            "items": {
+                                              "type": [
+                                                "string",
+                                                "null"
+                                              ]
+                                            },
+                                            "type": [
+                                              "array",
+                                              "null"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "key",
+                                          "operator"
+                                        ],
+                                        "type": [
+                                          "object",
+                                          "null"
+                                        ]
+                                      },
+                                      "type": [
+                                        "array",
+                                        "null"
+                                      ]
+                                    },
+                                    "matchLabels": {
+                                      "additionalProperties": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ]
+                                    }
+                                  },
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "x-kubernetes-map-type": "atomic"
+                                },
                                 "namespaces": {
-                                  "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
+                                  "description": "namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means \"this pod's namespace\"",
                                   "items": {
                                     "type": [
                                       "string",
@@ -941,8 +1139,74 @@
                               ],
                               "x-kubernetes-map-type": "atomic"
                             },
+                            "namespaceSelector": {
+                              "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
+                              "properties": {
+                                "matchExpressions": {
+                                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                                  "items": {
+                                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                                    "properties": {
+                                      "key": {
+                                        "description": "key is the label key that the selector applies to.",
+                                        "type": "string",
+                                        "x-kubernetes-patch-merge-key": "key",
+                                        "x-kubernetes-patch-strategy": "merge"
+                                      },
+                                      "operator": {
+                                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                                        "type": "string"
+                                      },
+                                      "values": {
+                                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                                        "items": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "type": [
+                                          "array",
+                                          "null"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "key",
+                                      "operator"
+                                    ],
+                                    "type": [
+                                      "object",
+                                      "null"
+                                    ]
+                                  },
+                                  "type": [
+                                    "array",
+                                    "null"
+                                  ]
+                                },
+                                "matchLabels": {
+                                  "additionalProperties": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "x-kubernetes-map-type": "atomic"
+                            },
                             "namespaces": {
-                              "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
+                              "description": "namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means \"this pod's namespace\"",
                               "items": {
                                 "type": [
                                   "string",
@@ -1732,6 +1996,14 @@
                             "null"
                           ]
                         },
+                        "terminationGracePeriodSeconds": {
+                          "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate.",
+                          "format": "int64",
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
                         "timeoutSeconds": {
                           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
                           "format": "int32",
@@ -1979,6 +2251,14 @@
                             "null"
                           ]
                         },
+                        "terminationGracePeriodSeconds": {
+                          "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate.",
+                          "format": "int64",
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
                         "timeoutSeconds": {
                           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
                           "format": "int32",
@@ -2013,7 +2293,7 @@
                               }
                             ]
                           },
-                          "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
+                          "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                           "type": [
                             "object",
                             "null"
@@ -2036,7 +2316,7 @@
                               }
                             ]
                           },
-                          "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
+                          "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                           "type": [
                             "object",
                             "null"
@@ -2407,6 +2687,14 @@
                           ],
                           "type": [
                             "object",
+                            "null"
+                          ]
+                        },
+                        "terminationGracePeriodSeconds": {
+                          "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate.",
+                          "format": "int64",
+                          "type": [
+                            "integer",
                             "null"
                           ]
                         },
@@ -3386,6 +3674,14 @@
                             "null"
                           ]
                         },
+                        "terminationGracePeriodSeconds": {
+                          "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate.",
+                          "format": "int64",
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
                         "timeoutSeconds": {
                           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
                           "format": "int32",
@@ -3626,6 +3922,14 @@
                             "null"
                           ]
                         },
+                        "terminationGracePeriodSeconds": {
+                          "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate.",
+                          "format": "int64",
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
                         "timeoutSeconds": {
                           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
                           "format": "int32",
@@ -3660,7 +3964,7 @@
                               }
                             ]
                           },
-                          "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
+                          "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                           "type": [
                             "object",
                             "null"
@@ -3683,7 +3987,7 @@
                               }
                             ]
                           },
-                          "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
+                          "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                           "type": [
                             "object",
                             "null"
@@ -4054,6 +4358,14 @@
                           ],
                           "type": [
                             "object",
+                            "null"
+                          ]
+                        },
+                        "terminationGracePeriodSeconds": {
+                          "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate.",
+                          "format": "int64",
+                          "type": [
+                            "integer",
                             "null"
                           ]
                         },
@@ -5056,6 +5368,14 @@
                             "null"
                           ]
                         },
+                        "terminationGracePeriodSeconds": {
+                          "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate.",
+                          "format": "int64",
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
                         "timeoutSeconds": {
                           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
                           "format": "int32",
@@ -5303,6 +5623,14 @@
                             "null"
                           ]
                         },
+                        "terminationGracePeriodSeconds": {
+                          "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate.",
+                          "format": "int64",
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
                         "timeoutSeconds": {
                           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
                           "format": "int32",
@@ -5337,7 +5665,7 @@
                               }
                             ]
                           },
-                          "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
+                          "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                           "type": [
                             "object",
                             "null"
@@ -5360,7 +5688,7 @@
                               }
                             ]
                           },
-                          "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
+                          "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                           "type": [
                             "object",
                             "null"
@@ -5731,6 +6059,14 @@
                           ],
                           "type": [
                             "object",
+                            "null"
+                          ]
+                        },
+                        "terminationGracePeriodSeconds": {
+                          "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate.",
+                          "format": "int64",
+                          "type": [
+                            "integer",
                             "null"
                           ]
                         },
@@ -6226,7 +6562,7 @@
                 ]
               },
               "terminationGracePeriodSeconds": {
-                "description": "Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.",
+                "description": "Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.",
                 "format": "int64",
                 "type": [
                   "integer",
@@ -6895,13 +7231,6 @@
                     "ephemeral": {
                       "description": "Represents an ephemeral volume that is handled by a normal storage driver.",
                       "properties": {
-                        "readOnly": {
-                          "description": "Specifies a read-only configuration for the volume. Defaults to false (read/write).",
-                          "type": [
-                            "boolean",
-                            "null"
-                          ]
-                        },
                         "volumeClaimTemplate": {
                           "description": "PersistentVolumeClaimTemplate is used to produce PersistentVolumeClaim objects as part of an EphemeralVolumeSource.",
                           "properties": {
@@ -7212,7 +7541,7 @@
                                           }
                                         ]
                                       },
-                                      "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
+                                      "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                                       "type": [
                                         "object",
                                         "null"
@@ -7235,7 +7564,7 @@
                                           }
                                         ]
                                       },
-                                      "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
+                                      "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
                                       "type": [
                                         "object",
                                         "null"

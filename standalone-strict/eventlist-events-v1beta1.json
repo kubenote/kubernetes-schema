@@ -336,7 +336,10 @@
                 ]
               }
             },
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "note": {
@@ -518,7 +521,6 @@
           }
         },
         "required": [
-          "metadata",
           "eventTime"
         ],
         "type": [
