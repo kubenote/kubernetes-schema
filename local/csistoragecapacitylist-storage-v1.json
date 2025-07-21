@@ -8,13 +8,13 @@
         "null"
       ],
       "enum": [
-        "storage.k8s.io/v1alpha1"
+        "storage.k8s.io/v1"
       ]
     },
     "items": {
       "description": "Items is the list of CSIStorageCapacity objects.",
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1alpha1.CSIStorageCapacity"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.CSIStorageCapacity"
       },
       "type": [
         "array",
@@ -48,7 +48,7 @@
     {
       "group": "storage.k8s.io",
       "kind": "CSIStorageCapacityList",
-      "version": "v1alpha1"
+      "version": "v1"
     }
   ],
   "$schema": "http://json-schema.org/schema#"

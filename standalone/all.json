@@ -1318,6 +1318,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.NetworkPolicySpec"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.NetworkPolicyStatus"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.ServiceBackendPort"
     },
     {
@@ -1331,21 +1334,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1.Scheduling"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1alpha1.Overhead"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1alpha1.RuntimeClass"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1alpha1.RuntimeClassList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1alpha1.RuntimeClassSpec"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1alpha1.Scheduling"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.node.v1beta1.Overhead"
@@ -1492,6 +1480,12 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.CSINodeSpec"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.CSIStorageCapacity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.CSIStorageCapacityList"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.StorageClass"
     },
     {
@@ -1520,12 +1514,6 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.VolumeNodeResources"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1alpha1.CSIStorageCapacity"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1alpha1.CSIStorageCapacityList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1beta1.CSIStorageCapacity"

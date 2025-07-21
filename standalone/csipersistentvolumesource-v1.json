@@ -5,14 +5,14 @@
       "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
       "properties": {
         "name": {
-          "description": "Name is unique within a namespace to reference a secret resource.",
+          "description": "name is unique within a namespace to reference a secret resource.",
           "type": [
             "string",
             "null"
           ]
         },
         "namespace": {
-          "description": "Namespace defines the space within which the secret name must be unique.",
+          "description": "namespace defines the space within which the secret name must be unique.",
           "type": [
             "string",
             "null"
@@ -29,14 +29,14 @@
       "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
       "properties": {
         "name": {
-          "description": "Name is unique within a namespace to reference a secret resource.",
+          "description": "name is unique within a namespace to reference a secret resource.",
           "type": [
             "string",
             "null"
           ]
         },
         "namespace": {
-          "description": "Namespace defines the space within which the secret name must be unique.",
+          "description": "namespace defines the space within which the secret name must be unique.",
           "type": [
             "string",
             "null"
@@ -50,14 +50,14 @@
       "x-kubernetes-map-type": "atomic"
     },
     "driver": {
-      "description": "Driver is the name of the driver to use for this volume. Required.",
+      "description": "driver is the name of the driver to use for this volume. Required.",
       "type": [
         "string",
         "null"
       ]
     },
     "fsType": {
-      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\".",
+      "description": "fsType to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\".",
       "type": [
         "string",
         "null"
@@ -67,14 +67,14 @@
       "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
       "properties": {
         "name": {
-          "description": "Name is unique within a namespace to reference a secret resource.",
+          "description": "name is unique within a namespace to reference a secret resource.",
           "type": [
             "string",
             "null"
           ]
         },
         "namespace": {
-          "description": "Namespace defines the space within which the secret name must be unique.",
+          "description": "namespace defines the space within which the secret name must be unique.",
           "type": [
             "string",
             "null"
@@ -91,14 +91,14 @@
       "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
       "properties": {
         "name": {
-          "description": "Name is unique within a namespace to reference a secret resource.",
+          "description": "name is unique within a namespace to reference a secret resource.",
           "type": [
             "string",
             "null"
           ]
         },
         "namespace": {
-          "description": "Namespace defines the space within which the secret name must be unique.",
+          "description": "namespace defines the space within which the secret name must be unique.",
           "type": [
             "string",
             "null"
@@ -112,7 +112,7 @@
       "x-kubernetes-map-type": "atomic"
     },
     "readOnly": {
-      "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).",
+      "description": "readOnly value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).",
       "type": [
         "boolean",
         "null"
@@ -125,14 +125,14 @@
           "null"
         ]
       },
-      "description": "Attributes of the volume to publish.",
+      "description": "volumeAttributes of the volume to publish.",
       "type": [
         "object",
         "null"
       ]
     },
     "volumeHandle": {
-      "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required.",
+      "description": "volumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required.",
       "type": [
         "string",
         "null"

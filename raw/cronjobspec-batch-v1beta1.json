@@ -17,7 +17,7 @@
       ]
     },
     "jobTemplate": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.23.9/_definitions.json#/definitions/io.k8s.api.batch.v1beta1.JobTemplateSpec",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.24.0/_definitions.json#/definitions/io.k8s.api.batch.v1beta1.JobTemplateSpec",
       "description": "Specifies the job that will be created when executing a CronJob."
     },
     "schedule": {
@@ -47,6 +47,13 @@
       "description": "This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.",
       "type": [
         "boolean",
+        "null"
+      ]
+    },
+    "timeZone": {
+      "description": "The time zone for the given schedule, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. If not specified, this will rely on the time zone of the kube-controller-manager process. ALPHA: This field is in alpha and must be enabled via the `CronJobTimeZone` feature gate.",
+      "type": [
+        "string",
         "null"
       ]
     }

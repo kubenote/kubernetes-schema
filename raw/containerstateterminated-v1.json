@@ -2,7 +2,7 @@
   "description": "ContainerStateTerminated is a terminated state of a container.",
   "properties": {
     "containerID": {
-      "description": "Container's ID in the format 'docker://<container_id>'",
+      "description": "Container's ID in the format '<type>://<container_id>'",
       "type": [
         "string",
         "null"
@@ -17,7 +17,7 @@
       ]
     },
     "finishedAt": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.23.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.24.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Time at which the container last terminated"
     },
     "message": {
@@ -43,7 +43,7 @@
       ]
     },
     "startedAt": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.23.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.24.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Time at which previous execution of the container started"
     }
   },
