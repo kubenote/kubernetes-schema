@@ -11,7 +11,7 @@ on:
 permissions:
   contents: write
 jobs:
-  Generate Branch:
+  Generate_Branch:
     runs-on: ubuntu-latest
     env:
       DEFAULT_PREFIX: main
