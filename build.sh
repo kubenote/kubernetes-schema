@@ -33,8 +33,8 @@ log "Detected ${ALL_K8S_VERSIONS// /, }"
 
 log "Checking local/remote existing branches..."
 git fetch --all --prune
-EXISTING_BRANCHES=$(git branch -r   
-  | sed 's|origin/||'    
+EXISTING_BRANCHES=$(git branch -r \
+  | sed 's|origin/||' \
   | sort -Vu)
 
 log "Existing branches: ${EXISTING_BRANCHES// /, }"
