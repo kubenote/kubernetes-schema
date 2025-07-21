@@ -191,7 +191,7 @@
     {
       "group": "flowcontrol.apiserver.k8s.io",
       "kind": "WatchEvent",
-      "version": "v1alpha1"
+      "version": "v1"
     },
     {
       "group": "flowcontrol.apiserver.k8s.io",

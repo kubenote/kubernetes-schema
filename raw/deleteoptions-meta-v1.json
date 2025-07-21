@@ -42,7 +42,7 @@
         "events.k8s.io/v1",
         "events.k8s.io/v1beta1",
         "extensions/v1beta1",
-        "flowcontrol.apiserver.k8s.io/v1alpha1",
+        "flowcontrol.apiserver.k8s.io/v1",
         "flowcontrol.apiserver.k8s.io/v1beta1",
         "flowcontrol.apiserver.k8s.io/v1beta2",
         "flowcontrol.apiserver.k8s.io/v1beta3",
@@ -107,7 +107,7 @@
       ]
     },
     "preconditions": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.28.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.29.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions",
       "description": "Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned."
     },
     "propagationPolicy": {
@@ -293,7 +293,7 @@
     {
       "group": "flowcontrol.apiserver.k8s.io",
       "kind": "DeleteOptions",
-      "version": "v1alpha1"
+      "version": "v1"
     },
     {
       "group": "flowcontrol.apiserver.k8s.io",
