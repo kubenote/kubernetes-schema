@@ -12,7 +12,7 @@
     "conditions": {
       "description": "Represents the latest available observations of a replication controller's current state.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.25.9/_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationControllerCondition"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.0/_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationControllerCondition"
       },
       "type": [
         "array",
@@ -46,7 +46,7 @@
       ]
     },
     "replicas": {
-      "description": "Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller",
+      "description": "Replicas is the most recently observed number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller",
       "format": "int32",
       "type": [
         "integer",

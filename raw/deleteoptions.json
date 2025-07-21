@@ -47,7 +47,7 @@
       ]
     },
     "preconditions": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.25.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions",
       "description": "Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned."
     },
     "propagationPolicy": {
@@ -79,6 +79,11 @@
       "group": "admissionregistration.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1"
+    },
+    {
+      "group": "admissionregistration.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1alpha1"
     },
     {
       "group": "admissionregistration.k8s.io",
@@ -124,6 +129,11 @@
       "group": "authentication.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1"
+    },
+    {
+      "group": "authentication.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1alpha1"
     },
     {
       "group": "authentication.k8s.io",
@@ -231,6 +241,11 @@
       "version": "v1beta2"
     },
     {
+      "group": "flowcontrol.apiserver.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1beta3"
+    },
+    {
       "group": "imagepolicy.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1alpha1"
@@ -294,6 +309,11 @@
       "group": "rbac.authorization.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1beta1"
+    },
+    {
+      "group": "resource.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1alpha1"
     },
     {
       "group": "scheduling.k8s.io",

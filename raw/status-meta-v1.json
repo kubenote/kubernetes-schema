@@ -8,7 +8,8 @@
         "null"
       ],
       "enum": [
-        "v1"
+        "v1",
+        "resource.k8s.io/v1alpha1"
       ]
     },
     "code": {
@@ -20,7 +21,7 @@
       ]
     },
     "details": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.25.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails",
       "description": "Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type."
     },
     "kind": {
@@ -41,7 +42,7 @@
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.25.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     },
     "reason": {
@@ -65,6 +66,11 @@
       "group": "",
       "kind": "Status",
       "version": "v1"
+    },
+    {
+      "group": "resource.k8s.io",
+      "kind": "Status",
+      "version": "v1alpha1"
     }
   ],
   "$schema": "http://json-schema.org/schema#"

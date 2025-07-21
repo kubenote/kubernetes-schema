@@ -12,6 +12,7 @@
         "admission.k8s.io/v1",
         "admission.k8s.io/v1beta1",
         "admissionregistration.k8s.io/v1",
+        "admissionregistration.k8s.io/v1alpha1",
         "admissionregistration.k8s.io/v1beta1",
         "apiextensions.k8s.io/v1",
         "apiextensions.k8s.io/v1beta1",
@@ -21,6 +22,7 @@
         "apps/v1beta1",
         "apps/v1beta2",
         "authentication.k8s.io/v1",
+        "authentication.k8s.io/v1alpha1",
         "authentication.k8s.io/v1beta1",
         "authorization.k8s.io/v1",
         "authorization.k8s.io/v1beta1",
@@ -42,6 +44,7 @@
         "flowcontrol.apiserver.k8s.io/v1alpha1",
         "flowcontrol.apiserver.k8s.io/v1beta1",
         "flowcontrol.apiserver.k8s.io/v1beta2",
+        "flowcontrol.apiserver.k8s.io/v1beta3",
         "imagepolicy.k8s.io/v1alpha1",
         "internal.apiserver.k8s.io/v1alpha1",
         "networking.k8s.io/v1",
@@ -55,6 +58,7 @@
         "rbac.authorization.k8s.io/v1",
         "rbac.authorization.k8s.io/v1alpha1",
         "rbac.authorization.k8s.io/v1beta1",
+        "resource.k8s.io/v1alpha1",
         "scheduling.k8s.io/v1",
         "scheduling.k8s.io/v1alpha1",
         "scheduling.k8s.io/v1beta1",
@@ -138,6 +142,11 @@
     {
       "group": "admissionregistration.k8s.io",
       "kind": "DeleteOptions",
+      "version": "v1alpha1"
+    },
+    {
+      "group": "admissionregistration.k8s.io",
+      "kind": "DeleteOptions",
       "version": "v1beta1"
     },
     {
@@ -179,6 +188,11 @@
       "group": "authentication.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1"
+    },
+    {
+      "group": "authentication.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1alpha1"
     },
     {
       "group": "authentication.k8s.io",
@@ -286,6 +300,11 @@
       "version": "v1beta2"
     },
     {
+      "group": "flowcontrol.apiserver.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1beta3"
+    },
+    {
       "group": "imagepolicy.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1alpha1"
@@ -349,6 +368,11 @@
       "group": "rbac.authorization.k8s.io",
       "kind": "DeleteOptions",
       "version": "v1beta1"
+    },
+    {
+      "group": "resource.k8s.io",
+      "kind": "DeleteOptions",
+      "version": "v1alpha1"
     },
     {
       "group": "scheduling.k8s.io",
