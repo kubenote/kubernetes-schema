@@ -53,11 +53,6 @@ for K8S_VERSION in $VERSIONS_TO_BUILD; do
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --expanded --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
     $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
   fi
-
-  if [ ! -d "${K8S_VERSION}" ]; then
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --expanded --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
-    $OPENAPI2JSONSCHEMABIN -o "schemas/${K8S_VERSION}/raw" --kubernetes --prefix "${PREFIX}" "${SCHEMA}"
-  fi
 done
 
 git config --global user.email "r.rakeda@gmail.com"
@@ -67,7 +62,7 @@ chmod -R u+w schemas/
 
 # Move generated content to root and push as a branch
 git checkout --orphan "$K8S_VERSION"
-cp -r "schemas/${K8S_VERSION}/." .
+cp -r "schemas/${K8S_VERSION}"/* .
 git add .
 git commit -m "Add schemas for $K8S_VERSION"
 git push origin "$K8S_VERSION"
