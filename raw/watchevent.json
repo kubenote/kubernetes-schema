@@ -2,7 +2,7 @@
   "description": "Event represents a single event to a watched resource.",
   "properties": {
     "object": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
       "description": "Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context."
     },
     "type": {
@@ -146,6 +146,11 @@
     {
       "group": "certificates.k8s.io",
       "kind": "WatchEvent",
+      "version": "v1alpha1"
+    },
+    {
+      "group": "certificates.k8s.io",
+      "kind": "WatchEvent",
       "version": "v1beta1"
     },
     {
@@ -271,7 +276,7 @@
     {
       "group": "resource.k8s.io",
       "kind": "WatchEvent",
-      "version": "v1alpha1"
+      "version": "v1alpha2"
     },
     {
       "group": "scheduling.k8s.io",

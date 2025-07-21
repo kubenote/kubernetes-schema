@@ -2,7 +2,7 @@
   "description": "LeaseSpec is a specification of a Lease.",
   "properties": {
     "acquireTime": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
       "description": "acquireTime is a time when the current lease was acquired."
     },
     "holderIdentity": {
@@ -13,7 +13,7 @@
       ]
     },
     "leaseDurationSeconds": {
-      "description": "leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed RenewTime.",
+      "description": "leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed renewTime.",
       "format": "int32",
       "type": [
         "integer",
@@ -29,7 +29,7 @@
       ]
     },
     "renewTime": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
       "description": "renewTime is a time when the current holder of a lease has last updated the lease."
     }
   },
