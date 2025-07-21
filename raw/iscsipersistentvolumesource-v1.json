@@ -73,7 +73,7 @@
       ]
     },
     "secretRef": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.4/_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.32.5/_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference",
       "description": "secretRef is the CHAP Secret for iSCSI target and initiator authentication"
     },
     "targetPortal": {
