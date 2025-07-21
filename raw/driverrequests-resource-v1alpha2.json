@@ -11,7 +11,7 @@
     "requests": {
       "description": "Requests describes all resources that are needed from the driver.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.8/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceRequest"
+        "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.9/_definitions.json#/definitions/io.k8s.api.resource.v1alpha2.ResourceRequest"
       },
       "type": [
         "array",
@@ -20,7 +20,7 @@
       "x-kubernetes-list-type": "atomic"
     },
     "vendorParameters": {
-      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.8/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "$ref": "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.9/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
       "description": "VendorParameters are arbitrary setup parameters for all requests of the claim. They are ignored while allocating the claim."
     }
   },
