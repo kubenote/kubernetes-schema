@@ -8,8 +8,10 @@ on:
         default: 'main'
   schedule:
     - cron: "10 10 */2 * *"
+permissions:
+  contents: write
 jobs:
-  gen:
+  Generate Branch:
     runs-on: ubuntu-latest
     env:
       DEFAULT_PREFIX: main
