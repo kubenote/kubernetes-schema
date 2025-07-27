@@ -1,4 +1,7 @@
-# kubernetes-schema
+<h1>
+  <img src="./public/logo.png" alt="KubeForge Icon" style="height: 1.5em; vertical-align: middle; margin-right: 0.5em;">
+  kubernetes-schema
+</h1>
 
 > A structured and versioned archive of Kubernetes JSON schemas, organized for easier consumption and tooling integration.
 
