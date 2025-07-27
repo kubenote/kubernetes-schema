@@ -1,5 +1,5 @@
 <h1>
-  <img src="./public/logo.png" alt="KubeForge Icon" style="height: 1.5em; vertical-align: middle; margin-right: 0.5em;">
+  <img src="./logo.png" alt="KubeForge Icon" style="height: 1.5em; vertical-align: middle; margin-right: 0.5em;">
   kubernetes-schema
 </h1>
 
